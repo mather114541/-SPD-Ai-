@@ -1,0 +1,100 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=60000 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... tion $base; python rl-train\train_ppo.py --steps 60000 --tag base *>  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 1] steps=2048 | pi=-0.0149 vf=0.0316 ent=-2.4798 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 7s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 2] steps=4096 | pi=-0.0170 vf=0.0013 ent=-2.4665 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 13s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 3] steps=6144 | pi=-0.0144 vf=0.0009 ent=-2.4483 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 19s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 4] steps=8192 | pi=-0.0169 vf=0.0007 ent=-2.4254 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 24s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 5] steps=10240 | pi=-0.0134 vf=0.0008 ent=-2.4115 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 30s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 6] steps=12288 | pi=-0.0167 vf=0.0017 ent=-2.4090 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 36s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 7] steps=14336 | pi=-0.0147 vf=0.0012 ent=-2.3889 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 42s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 8] steps=16384 | pi=-0.0127 vf=0.0015 ent=-2.4034 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 47s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 9] steps=18432 | pi=-0.0202 vf=0.0007 ent=-2.3871 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 53s
+[iter 10] steps=20480 | pi=-0.0139 vf=0.0005 ent=-2.3941 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 59s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 11] steps=22528 | pi=-0.0167 vf=0.0005 ent=-2.3813 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 65s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 12] steps=24576 | pi=-0.0170 vf=0.0009 ent=-2.3765 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 70s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 13] steps=26624 | pi=-0.0183 vf=0.0008 ent=-2.3899 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 76s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 14] steps=28672 | pi=-0.0216 vf=0.0012 ent=-2.3698 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 82s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 15] steps=30720 | pi=-0.0193 vf=0.0009 ent=-2.3663 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 87s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 16] steps=32768 | pi=-0.0156 vf=0.0007 ent=-2.3700 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 93s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 17] steps=34816 | pi=-0.0182 vf=0.0007 ent=-2.3523 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 99s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 18] steps=36864 | pi=-0.0178 vf=0.0007 ent=-2.3332 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 105s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 19] steps=38912 | pi=-0.0222 vf=0.0006 ent=-2.3243 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 110s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 20] steps=40960 | pi=-0.0225 vf=0.0010 ent=-2.3329 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 116s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 21] steps=43008 | pi=-0.0144 vf=0.0008 ent=-2.3465 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 122s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 22] steps=45056 | pi=-0.0156 vf=0.0006 ent=-2.3407 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 128s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:100)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1819)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1510)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:157)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)

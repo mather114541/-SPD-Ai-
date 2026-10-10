@@ -1,0 +1,22 @@
+Shattered Pixel Dungeon - AI Autopilot  v0.0.1 (test build)
+========================================================
+
+怎么玩：
+  1) 双击 start_game.bat 启动游戏；
+  2) 进入游戏后，点工具栏上的 AI 按钮（或按 F8）开启托管；
+  3) 再点一次 AI 按钮 / 按 F8 即可暂停，恢复手动操作。
+
+默认设置：
+  模型 bc11（会拾取物品、会回收掷出的石头）；节奏 2 步/秒。
+  想换节奏或模型，用命令行：
+    start_game.bat                                默认（bc11, 500ms/步）
+    start_game.bat rl-train/out/bc11.onnx 1000    1 步/秒
+    start_game.bat rl-train/out/bc11.onnx 250     4 步/秒
+
+已知问题：
+  - AI 目前还不会主动使用战斗技巧中的高级部分，且不换装备（V0.0.2 会用更强专家重训）；
+  - 遇到隐藏门楼层可能探索较久；
+  - 需要在 64 位 Windows + 已安装 Java 11 及以上。
+
+许可：Shattered PD 为 GPL-3.0；本项目为其派生物，同样遵循 GPL-3.0。
+源码：见仓库（本包含编译产物与原版 jar，方便直接试玩）。

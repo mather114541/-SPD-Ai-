@@ -1,0 +1,1200 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors;
+
+import com.shatteredpixel.shatteredpixeldungeon.Badges;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Electricity;
+import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.StormCloud;
+import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.ToxicGas;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Adrenaline;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.AllyBuff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Amok;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.ArcaneArmor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.AscensionChallenge;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Barkskin;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Berserk;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bleeding;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bless;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Burning;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.ChampionEnemy;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Charm;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Chill;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Corrosion;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Corruption;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Cripple;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Daze;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Doom;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Dread;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FireImbue;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Frost;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FrostImbue;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Fury;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Haste;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hex;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Hunger;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Invulnerability;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.LifeLink;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.LostInventory;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MagicalSleep;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Momentum;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.MonkEnergy;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Ooze;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Paralysis;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Poison;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Preparation;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.ShieldBuff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Sleep;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Slow;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.SnipersMark;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Speed;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Stamina;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Terror;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Vertigo;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Vulnerable;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Weakness;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.HeroClass;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.HeroSubClass;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.cleric.PowerOfMany;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.duelist.Challenge;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.rogue.DeathMark;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.warrior.Endure;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.AuraOfProtection;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.BeamingRay;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.GuidingLight;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.LifeLinkSpell;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.ShieldOfLight;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Brute;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.CrystalSpire;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.DwarfKing;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Elemental;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.GnollGeomancer;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Necromancer;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Tengu;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.MirrorImage;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.PrismaticImage;
+import com.shatteredpixel.shatteredpixeldungeon.effects.FloatingText;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Splash;
+import com.shatteredpixel.shatteredpixeldungeon.effects.particles.ShadowParticle;
+import com.shatteredpixel.shatteredpixeldungeon.items.BrokenSeal;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.Armor;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.curses.Bulk;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.AntiMagic;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Brimstone;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Flow;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Obfuscation;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Potential;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Swiftness;
+import com.shatteredpixel.shatteredpixeldungeon.items.armor.glyphs.Viscosity;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.DriedRose;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourglass;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.exotic.PotionOfCleansing;
+import com.shatteredpixel.shatteredpixeldungeon.items.quest.Pickaxe;
+import com.shatteredpixel.shatteredpixeldungeon.items.rings.RingOfElements;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRetribution;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfChallenge;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.exotic.ScrollOfPsionicBlast;
+import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.FerretTuft;
+import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfBlastWave;
+import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfFireblast;
+import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfFrost;
+import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfLightning;
+import com.shatteredpixel.shatteredpixeldungeon.items.wands.WandOfLivingEarth;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.Weapon;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Blazing;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Grim;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Kinetic;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Shocking;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.enchantments.Vorpal;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.Sickle;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.MissileWeapon;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.darts.ShockingDart;
+import com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm;
+import com.shatteredpixel.shatteredpixeldungeon.levels.features.Door;
+import com.shatteredpixel.shatteredpixeldungeon.levels.traps.GeyserTrap;
+import com.shatteredpixel.shatteredpixeldungeon.levels.traps.GnollRockfallTrap;
+import com.shatteredpixel.shatteredpixeldungeon.levels.traps.GrimTrap;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Languages;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Earthroot;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Swiftthistle;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.MobSprite;
+import com.shatteredpixel.shatteredpixeldungeon.ui.TargetHealthIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.BArray;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
+public abstract class Char
+extends Actor {
+    public int pos = 0;
+    public CharSprite sprite;
+    public int HT;
+    public int HP;
+    protected float baseSpeed = 1.0f;
+    protected PathFinder.Path path;
+    public int paralysed = 0;
+    public boolean rooted = false;
+    public boolean flying = false;
+    public int invisible = 0;
+    public Alignment alignment;
+    public int viewDistance = 8;
+    public boolean[] fieldOfView = null;
+    private LinkedHashSet<Buff> buffs = new LinkedHashSet();
+    protected static final String POS = "pos";
+    protected static final String PREV_POS = "prev_pos";
+    protected static final String TAG_HP = "HP";
+    protected static final String TAG_HT = "HT";
+    protected static final String TAG_SHLD = "SHLD";
+    protected static final String BUFFS = "buffs";
+    public static int INFINITE_ACCURACY = 1000000;
+    public static int INFINITE_EVASION = 1000000;
+    private static int hitMissIcon = -1;
+    private int cachedShield = 0;
+    public boolean needsShieldUpdate = true;
+    protected int cachedIncomingDOT = 0;
+    public boolean needsIncomingDOTUpdate = true;
+    private static HashSet<Class> NO_ARMOR_PHYSICAL_SOURCES = new HashSet();
+    public boolean deathMarked;
+    protected int previousPos;
+    protected final HashSet<Class> resistances;
+    protected final HashSet<Class> immunities;
+    protected HashSet<Property> properties;
+
+    public Char() {
+        NO_ARMOR_PHYSICAL_SOURCES.add(CrystalSpire.SpireSpike.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(GnollGeomancer.Boulder.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(GnollGeomancer.GnollRockFall.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(GnollRockfallTrap.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(DwarfKing.KingDamager.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(DwarfKing.Summoning.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(LifeLink.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(Chasm.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(WandOfBlastWave.Knockback.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(Heap.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(Necromancer.SummoningBlockDamage.class);
+        NO_ARMOR_PHYSICAL_SOURCES.add(DriedRose.GhostHero.NoRoseDamage.class);
+        this.deathMarked = false;
+        this.previousPos = -1;
+        this.resistances = new HashSet();
+        this.immunities = new HashSet();
+        this.properties = new HashSet();
+    }
+
+    @Override
+    protected boolean act() {
+        if (this.fieldOfView == null || this.fieldOfView.length != Dungeon.level.length()) {
+            this.fieldOfView = new boolean[Dungeon.level.length()];
+        }
+        Dungeon.level.updateFieldOfView(this, this.fieldOfView);
+        if (this.properties().contains((Object)Property.IMMOVABLE)) {
+            this.throwItems();
+        }
+        return false;
+    }
+
+    protected void throwItems() {
+        Heap heap = (Heap)Dungeon.level.heaps.get(this.pos);
+        if (heap != null && heap.type == Heap.Type.HEAP && !(heap.peek() instanceof Tengu.BombAbility.BombItem) && !(heap.peek() instanceof Tengu.ShockerAbility.ShockerItem)) {
+            ArrayList<Integer> candidates = new ArrayList<Integer>();
+            for (int n : PathFinder.NEIGHBOURS8) {
+                if (!Dungeon.level.passable[this.pos + n]) continue;
+                candidates.add(this.pos + n);
+            }
+            if (!candidates.isEmpty()) {
+                Dungeon.level.drop((Item)heap.pickUp(), (int)((Integer)Random.element(candidates)).intValue()).sprite.drop(this.pos);
+            }
+        }
+    }
+
+    public String name() {
+        return Messages.get(this, "name", new Object[0]);
+    }
+
+    public boolean canInteract(Char c) {
+        if (Dungeon.level.adjacent(this.pos, c.pos)) {
+            return true;
+        }
+        return c instanceof Hero && this.alignment == Alignment.ALLY && !Char.hasProp(this, Property.IMMOVABLE) && Dungeon.level.distance(this.pos, c.pos) <= 2 * Dungeon.hero.pointsInTalent(Talent.ALLY_WARP);
+    }
+
+    public boolean interact(Char c) {
+        if (!Dungeon.level.passable[this.pos] && !c.flying) {
+            return true;
+        }
+        if (this.properties().contains((Object)Property.LARGE) && !Dungeon.level.openSpace[c.pos] || c.properties().contains((Object)Property.LARGE) && !Dungeon.level.openSpace[this.pos]) {
+            return true;
+        }
+        int oldPos = this.pos;
+        int newPos = c.pos;
+        if (Char.hasProp(this, Property.IMMOVABLE) || Char.hasProp(c, Property.IMMOVABLE)) {
+            return true;
+        }
+        if (c == Dungeon.hero && Dungeon.hero.hasTalent(Talent.ALLY_WARP)) {
+            PathFinder.buildDistanceMap(c.pos, BArray.or(Dungeon.level.passable, Dungeon.level.avoid, null));
+            if (PathFinder.distance[this.pos] == Integer.MAX_VALUE) {
+                return true;
+            }
+            this.pos = newPos;
+            c.pos = oldPos;
+            ScrollOfTeleportation.appear(this, newPos);
+            ScrollOfTeleportation.appear(c, oldPos);
+            Dungeon.observe();
+            GameScene.updateFog();
+            return true;
+        }
+        if (this.paralysed > 0 || c.paralysed > 0 || this.rooted || c.rooted || this.buff(Vertigo.class) != null || c.buff(Vertigo.class) != null) {
+            return true;
+        }
+        c.pos = oldPos;
+        this.moveSprite(oldPos, newPos);
+        this.move(newPos);
+        c.pos = newPos;
+        c.sprite.move(newPos, oldPos);
+        c.move(oldPos);
+        c.spend(1.0f / c.speed());
+        if (c == Dungeon.hero) {
+            if (Dungeon.hero.subClass == HeroSubClass.FREERUNNER) {
+                Buff.affect(Dungeon.hero, Momentum.class).gainStack();
+            }
+            Dungeon.hero.busy();
+        }
+        return true;
+    }
+
+    protected boolean moveSprite(int from, int to) {
+        if (this.sprite.isVisible() && this.sprite.parent != null && (Dungeon.level.heroFOV[from] || Dungeon.level.heroFOV[to])) {
+            if (this.sprite != null) this.sprite.move(from, to);
+            return true;
+        }
+        if (this.sprite != null) this.sprite.turnTo(from, to);
+        if (this.sprite != null) this.sprite.place(to);
+        return true;
+    }
+
+    public void hitSound(float pitch) {
+        Sample.INSTANCE.play("sounds/hit.mp3", 1.0f, pitch);
+    }
+
+    public boolean blockSound(float pitch) {
+        return false;
+    }
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(POS, this.pos);
+        bundle.put(PREV_POS, this.previousPos);
+        bundle.put(TAG_HP, this.HP);
+        bundle.put(TAG_HT, this.HT);
+        bundle.put(BUFFS, this.buffs);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        this.pos = bundle.getInt(POS);
+        this.previousPos = bundle.getInt(PREV_POS);
+        this.HP = bundle.getInt(TAG_HP);
+        this.HT = bundle.getInt(TAG_HT);
+        for (Bundlable b : bundle.getCollection(BUFFS)) {
+            if (b == null) continue;
+            ((Buff)b).attachTo(this);
+        }
+    }
+
+    public final boolean attack(Char enemy) {
+        return this.attack(enemy, 1.0f, 0.0f, 1.0f);
+    }
+
+    public boolean attack(Char enemy, float dmgMulti, float dmgBonus, float accMulti) {
+        boolean visibleFight;
+        if (enemy == null) {
+            return false;
+        }
+        boolean bl = visibleFight = Dungeon.level.heroFOV[this.pos] || Dungeon.level.heroFOV[enemy.pos];
+        if (enemy.isInvulnerable(this.getClass())) {
+            if (visibleFight) {
+                enemy.sprite.showStatus(65280, Messages.get(this, "invulnerable", new Object[0]), new Object[0]);
+                Sample.INSTANCE.play("sounds/hit_parry.mp3", 1.0f, Random.Float(0.96f, 1.05f));
+            }
+            return false;
+        }
+        if (Char.hit(this, enemy, accMulti, false)) {
+            Talent.CombinedLethalityAbilityTracker combinedLethality;
+            int effectiveDamage;
+            Berserk berserk;
+            float dmg;
+            Preparation prep;
+            int dr = Math.round((float)enemy.drRoll() * AscensionChallenge.statModifier(enemy));
+            if (this instanceof Hero) {
+                Hero h = (Hero)this;
+                if (h.belongings.attackingWeapon() instanceof MissileWeapon && h.subClass == HeroSubClass.SNIPER && !Dungeon.level.adjacent(h.pos, enemy.pos)) {
+                    dr = 0;
+                }
+                if (h.buff(MonkEnergy.MonkAbility.UnarmedAbilityTracker.class) != null) {
+                    dr = 0;
+                }
+            }
+            if ((prep = this.buff(Preparation.class)) != null) {
+                dmg = prep.damageRoll(this);
+                if (this == Dungeon.hero && Dungeon.hero.hasTalent(Talent.BOUNTY_HUNTER)) {
+                    Buff.affect(Dungeon.hero, Talent.BountyHunterTracker.class, 0.0f);
+                }
+            } else {
+                dmg = this.damageRoll();
+            }
+            dmg *= dmgMulti;
+            dmg += dmgBonus;
+            if (enemy.buff(GuidingLight.Illuminated.class) != null) {
+                enemy.buff(GuidingLight.Illuminated.class).detach();
+                if (this == Dungeon.hero && Dungeon.hero.hasTalent(Talent.SEARING_LIGHT)) {
+                    dmg += (float)(1 + 2 * Dungeon.hero.pointsInTalent(Talent.SEARING_LIGHT));
+                }
+                if (this != Dungeon.hero && Dungeon.hero.subClass == HeroSubClass.PRIEST) {
+                    enemy.damage(5 + Dungeon.hero.lvl, GuidingLight.INSTANCE);
+                }
+            }
+            if ((berserk = this.buff(Berserk.class)) != null) {
+                dmg = berserk.damageFactor(dmg);
+            }
+            if (this.buff(Fury.class) != null) {
+                dmg *= 1.5f;
+            }
+            if (this.buff(PowerOfMany.PowerBuff.class) != null) {
+                dmg = this.buff(BeamingRay.BeamingRayBoost.class) != null && this.buff(BeamingRay.BeamingRayBoost.class).object == enemy.id() ? (dmg *= 1.3f + 0.05f * (float)Dungeon.hero.pointsInTalent(Talent.BEAMING_RAY)) : (dmg *= 1.25f);
+            }
+            for (ChampionEnemy buff : this.buffs(ChampionEnemy.class)) {
+                dmg *= buff.meleeDamageFactor();
+            }
+            dmg *= AscensionChallenge.statModifier(this);
+            Endure.EndureTracker endure = this.buff(Endure.EndureTracker.class);
+            if (endure != null) {
+                dmg = endure.damageFactor(dmg);
+            }
+            if ((endure = enemy.buff(Endure.EndureTracker.class)) != null) {
+                dmg = endure.adjustDamageTaken(dmg);
+            }
+            if (enemy.buff(ScrollOfChallenge.ChallengeArena.class) != null) {
+                dmg *= 0.67f;
+            }
+            if (Dungeon.hero.alignment == enemy.alignment && Dungeon.hero.buff(AuraOfProtection.AuraBuff.class) != null && (Dungeon.level.distance(enemy.pos, Dungeon.hero.pos) <= 2 || enemy.buff(LifeLinkSpell.LifeLinkSpellBuff.class) != null)) {
+                dmg *= 0.9f - 0.1f * (float)Dungeon.hero.pointsInTalent(Talent.AURA_OF_PROTECTION);
+            }
+            if (enemy.buff(MonkEnergy.MonkAbility.Meditate.MeditateResistance.class) != null) {
+                dmg *= 0.2f;
+            }
+            if (this.buff(Weakness.class) != null) {
+                dmg *= 0.67f;
+            }
+            if ((effectiveDamage = enemy.defenseProc(this, Math.round(dmg))) >= 0) {
+                effectiveDamage = Math.max(effectiveDamage - dr, 0);
+                if (enemy.buff(Viscosity.ViscosityTracker.class) != null) {
+                    effectiveDamage = enemy.buff(Viscosity.ViscosityTracker.class).deferDamage(effectiveDamage);
+                    enemy.buff(Viscosity.ViscosityTracker.class).detach();
+                }
+                if (enemy.buff(Vulnerable.class) != null) {
+                    effectiveDamage = (int)((float)effectiveDamage * 1.33f);
+                }
+                effectiveDamage = this.attackProc(enemy, effectiveDamage);
+            }
+            if (visibleFight && (effectiveDamage > 0 || !enemy.blockSound(Random.Float(0.96f, 1.05f)))) {
+                this.hitSound(Random.Float(0.87f, 1.15f));
+            }
+            if (!enemy.isAlive()) {
+                return true;
+            }
+            enemy.damage(effectiveDamage, this);
+            if (this.buff(FireImbue.class) != null) {
+                this.buff(FireImbue.class).proc(enemy);
+            }
+            if (this.buff(FrostImbue.class) != null) {
+                this.buff(FrostImbue.class).proc(enemy);
+            }
+            if (enemy.isAlive() && enemy.alignment != this.alignment && prep != null && prep.canKO(enemy)) {
+                enemy.HP = 0;
+                for (Buff buff : enemy.buffs(Brute.BruteRage.class)) {
+                    buff.detach();
+                }
+                if (!enemy.isAlive()) {
+                    enemy.die(this);
+                } else {
+                    enemy.damage(-1, this);
+                    DeathMark.processFearTheReaper(enemy);
+                }
+                if (enemy.sprite != null) {
+                    enemy.sprite.showStatus(0xFF0000, Messages.get(Preparation.class, "assassinated", new Object[0]), new Object[0]);
+                }
+            }
+            if ((combinedLethality = this.buff(Talent.CombinedLethalityAbilityTracker.class)) != null && this instanceof Hero && ((Hero)this).belongings.attackingWeapon() instanceof MeleeWeapon && combinedLethality.weapon != ((Hero)this).belongings.attackingWeapon()) {
+                if (enemy.isAlive() && enemy.alignment != this.alignment && !Char.hasProp(enemy, Property.BOSS) && !Char.hasProp(enemy, Property.MINIBOSS) && (float)enemy.HP / (float)enemy.HT <= 0.4f * (float)((Hero)this).pointsInTalent(Talent.COMBINED_LETHALITY) / 3.0f) {
+                    enemy.HP = 0;
+                    for (Buff buff : enemy.buffs(Brute.BruteRage.class)) {
+                        buff.detach();
+                    }
+                    if (!enemy.isAlive()) {
+                        enemy.die(this);
+                    } else {
+                        enemy.damage(-1, this);
+                        DeathMark.processFearTheReaper(enemy);
+                    }
+                    if (enemy.sprite != null) {
+                        enemy.sprite.showStatus(0xFF0000, Messages.get(Talent.CombinedLethalityAbilityTracker.class, "executed", new Object[0]), new Object[0]);
+                    }
+                }
+                combinedLethality.detach();
+            }
+            if (enemy.sprite != null) {
+                enemy.sprite.bloodBurstA(this.sprite.center(), effectiveDamage);
+                enemy.sprite.flash();
+            }
+            if (!enemy.isAlive() && visibleFight) {
+                if (enemy == Dungeon.hero) {
+                    if (this == Dungeon.hero) {
+                        return true;
+                    }
+                    if (this instanceof WandOfLivingEarth.EarthGuardian || this instanceof MirrorImage || this instanceof PrismaticImage) {
+                        Badges.validateDeathFromFriendlyMagic();
+                    }
+                    Dungeon.fail(this);
+                    GLog.n(Messages.capitalize(Messages.get(Char.class, "kill", this.name())), new Object[0]);
+                } else if (this == Dungeon.hero) {
+                    GLog.i(Messages.capitalize(Messages.get(Char.class, "defeat", enemy.name())), new Object[0]);
+                }
+            }
+            return true;
+        }
+        if (!Char.hasProp(enemy, Property.OBJECT)) {
+            if (enemy.sprite != null) {
+                if (hitMissIcon != -1) {
+                    if (hitMissIcon == FloatingText.MISS_TUFT && Messages.lang() == Languages.ENGLISH && Random.Int(10) == 0) {
+                        enemy.sprite.showStatusWithIcon(0xFFFF00, "dooked", hitMissIcon, new Object[0]);
+                    } else {
+                        enemy.sprite.showStatusWithIcon(0xFFFF00, enemy.defenseVerb(), hitMissIcon, new Object[0]);
+                    }
+                    hitMissIcon = -1;
+                } else {
+                    enemy.sprite.showStatus(0xFFFF00, enemy.defenseVerb(), new Object[0]);
+                }
+            }
+            if (visibleFight) {
+                Sample.INSTANCE.play("sounds/miss.mp3");
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public static final boolean hit(Char attacker, Char defender, boolean magic) {
+        return Char.hit(attacker, defender, magic ? 2.0f : 1.0f, magic);
+    }
+
+    public static boolean hit(Char attacker, Char defender, float accMulti, boolean magic) {
+        float acuStat = attacker.attackSkill(defender);
+        float defStat = defender.defenseSkill(attacker);
+        if (defender instanceof Hero && ((Hero)defender).damageInterrupt) {
+            ((Hero)defender).interrupt();
+        }
+        if (attacker.invisible > 0 && attacker.canSurpriseAttack()) {
+            acuStat = INFINITE_ACCURACY;
+        }
+        if (defender.buff(MonkEnergy.MonkAbility.Focus.FocusBuff.class) != null) {
+            defStat = INFINITE_EVASION;
+        }
+        if (defStat >= (float)INFINITE_EVASION) {
+            hitMissIcon = FloatingText.getMissReasonIcon(attacker, acuStat, defender, INFINITE_EVASION);
+            return false;
+        }
+        if (acuStat >= (float)INFINITE_ACCURACY) {
+            hitMissIcon = FloatingText.getHitReasonIcon(attacker, INFINITE_ACCURACY, defender, defStat);
+            return true;
+        }
+        float acuRoll = Random.Float(acuStat);
+        if (attacker.buff(Bless.class) != null) {
+            acuRoll *= 1.25f;
+        }
+        if (attacker.buff(Hex.class) != null) {
+            acuRoll *= 0.8f;
+        }
+        if (attacker.buff(Daze.class) != null) {
+            acuRoll *= 0.5f;
+        }
+        for (ChampionEnemy buff : attacker.buffs(ChampionEnemy.class)) {
+            acuRoll *= buff.evasionAndAccuracyFactor();
+        }
+        acuRoll *= AscensionChallenge.statModifier(attacker);
+        if (Dungeon.hero.heroClass != HeroClass.CLERIC && Dungeon.hero.hasTalent(Talent.BLESS) && attacker.alignment == Alignment.ALLY) {
+            acuRoll *= 1.01f + 0.02f * (float)Dungeon.hero.pointsInTalent(Talent.BLESS);
+        }
+        acuRoll *= accMulti;
+        float defRoll = Random.Float(defStat);
+        if (defender.buff(Bless.class) != null) {
+            defRoll *= 1.25f;
+        }
+        if (defender.buff(Hex.class) != null) {
+            defRoll *= 0.8f;
+        }
+        if (defender.buff(Daze.class) != null) {
+            defRoll *= 0.5f;
+        }
+        for (ChampionEnemy buff : defender.buffs(ChampionEnemy.class)) {
+            defRoll *= buff.evasionAndAccuracyFactor();
+        }
+        defRoll *= AscensionChallenge.statModifier(defender);
+        if (Dungeon.hero.heroClass != HeroClass.CLERIC && Dungeon.hero.hasTalent(Talent.BLESS) && defender.alignment == Alignment.ALLY) {
+            defRoll *= 1.01f + 0.02f * (float)Dungeon.hero.pointsInTalent(Talent.BLESS);
+        }
+        if (acuRoll >= (defRoll *= FerretTuft.evasionMultiplier())) {
+            hitMissIcon = FloatingText.getHitReasonIcon(attacker, acuRoll, defender, defRoll);
+            return true;
+        }
+        hitMissIcon = FloatingText.getMissReasonIcon(attacker, acuRoll, defender, defRoll);
+        return false;
+    }
+
+    public int attackSkill(Char target) {
+        return 0;
+    }
+
+    public int defenseSkill(Char enemy) {
+        return 0;
+    }
+
+    public String defenseVerb() {
+        return Messages.get(this, "def_verb", new Object[0]);
+    }
+
+    public int drRoll() {
+        int dr = 0;
+        return dr += Random.NormalIntRange(0, Barkskin.currentLevel(this));
+    }
+
+    public int damageRoll() {
+        return 1;
+    }
+
+    public int attackProc(Char enemy, int damage) {
+        for (ChampionEnemy buff : this.buffs(ChampionEnemy.class)) {
+            buff.onAttackProc(enemy);
+        }
+        return damage;
+    }
+
+    public int defenseProc(Char enemy, int damage) {
+        ShieldOfLight.ShieldOfLightTracker shield;
+        Earthroot.Armor armor = this.buff(Earthroot.Armor.class);
+        if (armor != null) {
+            damage = armor.absorb(damage);
+        }
+        if ((shield = this.buff(ShieldOfLight.ShieldOfLightTracker.class)) != null && shield.object == enemy.id()) {
+            int min = 1 + Dungeon.hero.pointsInTalent(Talent.SHIELD_OF_LIGHT);
+            damage -= Random.NormalIntRange(min, 2 * min);
+            damage = Math.max(damage, 0);
+        } else if (this == Dungeon.hero && Dungeon.hero.heroClass != HeroClass.CLERIC && Dungeon.hero.hasTalent(Talent.SHIELD_OF_LIGHT) && TargetHealthIndicator.instance.target() == enemy && Random.Int(6) < 1 + Dungeon.hero.pointsInTalent(Talent.SHIELD_OF_LIGHT)) {
+            --damage;
+        }
+        if (!(this instanceof Hero || this instanceof PrismaticImage || Dungeon.hero.alignment != this.alignment || Dungeon.hero.belongings.armor() == null || Dungeon.hero.buff(AuraOfProtection.AuraBuff.class) == null || Dungeon.level.distance(this.pos, Dungeon.hero.pos) > 2 && this.buff(LifeLinkSpell.LifeLinkSpellBuff.class) == null)) {
+            damage = Dungeon.hero.belongings.armor().proc(enemy, this, damage);
+        }
+        return damage;
+    }
+
+    public int glyphLevel(Class<? extends Armor.Glyph> cls) {
+        if (Dungeon.hero != null && Dungeon.level != null && this != Dungeon.hero && Dungeon.hero.alignment == this.alignment && Dungeon.hero.buff(AuraOfProtection.AuraBuff.class) != null && (Dungeon.level.distance(this.pos, Dungeon.hero.pos) <= 2 || this.buff(LifeLinkSpell.LifeLinkSpellBuff.class) != null)) {
+            return Dungeon.hero.glyphLevel(cls);
+        }
+        return -1;
+    }
+
+    public float speed() {
+        float speed = this.baseSpeed;
+        if (this.buff(Cripple.class) != null) {
+            speed /= 2.0f;
+        }
+        if (this.buff(Stamina.class) != null) {
+            speed *= 1.5f;
+        }
+        if (this.buff(Adrenaline.class) != null) {
+            speed *= 2.0f;
+        }
+        if (this.buff(Haste.class) != null) {
+            speed *= 3.0f;
+        }
+        if (this.buff(Dread.class) != null) {
+            speed *= 2.0f;
+        }
+        speed *= Swiftness.speedBoost(this, this.glyphLevel(Swiftness.class));
+        speed *= Flow.speedBoost(this, this.glyphLevel(Flow.class));
+        return speed *= Bulk.speedBoost(this, this.glyphLevel(Bulk.class));
+    }
+
+    public boolean canSurpriseAttack() {
+        return true;
+    }
+
+    public int shielding() {
+        if (!this.needsShieldUpdate) {
+            return this.cachedShield;
+        }
+        this.cachedShield = 0;
+        for (ShieldBuff s : this.buffs(ShieldBuff.class)) {
+            this.cachedShield += s.shielding();
+        }
+        this.needsShieldUpdate = false;
+        return this.cachedShield;
+    }
+
+    public int incomingDOT() {
+        if (!this.needsIncomingDOTUpdate) {
+            return this.cachedIncomingDOT;
+        }
+        this.cachedIncomingDOT = 0;
+        for (Buff b : this.buffs()) {
+            if (!(b instanceof Buff.DOTbuff)) continue;
+            this.cachedIncomingDOT += Math.round(this.resist(b.getClass()) * (float)((Buff.DOTbuff)((Object)b)).totalIncomingDMG());
+        }
+        this.needsIncomingDOTUpdate = false;
+        return this.cachedIncomingDOT;
+    }
+
+    public void damage(int dmg, Object src) {
+        Charm c;
+        Dread d;
+        Terror t;
+        if (!this.isAlive() || dmg < 0) {
+            return;
+        }
+        if (this.isInvulnerable(src.getClass())) {
+            if (this.sprite != null) this.sprite.showStatus(65280, Messages.get(this, "invulnerable", new Object[0]), new Object[0]);
+            return;
+        }
+        if (!(src instanceof LifeLink) && !(src instanceof Hunger) && this.buff(LifeLink.class) != null) {
+            HashSet<LifeLink> links = this.buffs(LifeLink.class);
+            for (LifeLink link : links.toArray(new LifeLink[0])) {
+                if (Actor.findById(link.object) != null) continue;
+                links.remove(link);
+                link.detach();
+            }
+            dmg = (int)Math.ceil((float)dmg / (float)(links.size() + 1));
+            for (LifeLink link : links) {
+                Char ch = (Char)Actor.findById(link.object);
+                if (ch == null) continue;
+                ch.damage(dmg, link);
+                if (ch.isAlive()) continue;
+                link.detach();
+                if (ch != Dungeon.hero) continue;
+                Badges.validateDeathFromFriendlyMagic();
+                Dungeon.fail(src);
+                GLog.n(Messages.get(LifeLink.class, "ondeath", new Object[0]), new Object[0]);
+            }
+        }
+        float damage = dmg;
+        if (!(src instanceof Char || Dungeon.hero.alignment != this.alignment || Dungeon.hero.buff(AuraOfProtection.AuraBuff.class) == null || Dungeon.level.distance(this.pos, Dungeon.hero.pos) > 2 && this.buff(LifeLinkSpell.LifeLinkSpellBuff.class) == null)) {
+            damage *= 0.9f - 0.1f * (float)Dungeon.hero.pointsInTalent(Talent.AURA_OF_PROTECTION);
+        }
+        if (this.buff(PowerOfMany.PowerBuff.class) != null) {
+            damage = this.buff(LifeLinkSpell.LifeLinkSpellBuff.class) != null ? (damage *= 0.7f - 0.05f * (float)Dungeon.hero.pointsInTalent(Talent.LIFE_LINK)) : (damage *= 0.75f);
+        }
+        if ((t = this.buff(Terror.class)) != null) {
+            t.recover();
+        }
+        if ((d = this.buff(Dread.class)) != null) {
+            d.recover();
+        }
+        if ((c = this.buff(Charm.class)) != null) {
+            c.recover(src);
+        }
+        if (this.buff(Frost.class) != null) {
+            Buff.detach(this, Frost.class);
+        }
+        if (this.buff(MagicalSleep.class) != null) {
+            Buff.detach(this, MagicalSleep.class);
+        }
+        if (this.buff(Doom.class) != null && !this.isImmune(Doom.class)) {
+            damage *= 1.67f;
+        }
+        if (this.alignment != Alignment.ALLY && this.buff(DeathMark.DeathMarkTracker.class) != null) {
+            damage *= 1.25f;
+        }
+        float bleedAmt = 0.0f;
+        Class bleedSrc = null;
+        if (src instanceof Char && ((Char)src).buff(Sickle.HarvestBleedTracker.class) != null) {
+            if (!this.isImmune(Bleeding.class)) {
+                bleedAmt = dmg;
+                bleedSrc = Sickle.HarvestBleedTracker.class;
+            }
+            ((Char)src).buff(Sickle.HarvestBleedTracker.class).detach();
+        } else if (src instanceof Char && ((Char)src).buff(Vorpal.VorpalTracker.class) != null) {
+            if (!this.isImmune(Bleeding.class)) {
+                bleedAmt = ((Char)src).buff(Vorpal.VorpalTracker.class).powerMulti * (2.0f + (float)dmg / 2.0f);
+                bleedSrc = Vorpal.class;
+            }
+            ((Char)src).buff(Vorpal.VorpalTracker.class).detach();
+        }
+        Class<?> srcClass = src.getClass();
+        damage = this.isImmune(srcClass) ? 0.0f : (damage *= this.resist(srcClass));
+        dmg = Math.round(damage);
+        for (ChampionEnemy buff : this.buffs(ChampionEnemy.class)) {
+            dmg = (int)Math.ceil((float)dmg * buff.damageTakenFactor());
+        }
+        if (AntiMagic.RESISTS.contains(src.getClass())) {
+            dmg -= AntiMagic.drRoll(this, this.glyphLevel(AntiMagic.class));
+            if (this.buff(ArcaneArmor.class) != null) {
+                dmg -= Random.NormalIntRange(0, this.buff(ArcaneArmor.class).level());
+            }
+            if (dmg < 0) {
+                dmg = 0;
+            }
+        }
+        if (this.buff(Paralysis.class) != null) {
+            this.buff(Paralysis.class).processDamage(dmg);
+        }
+        BrokenSeal.WarriorShield shield = this.buff(BrokenSeal.WarriorShield.class);
+        if (!(src instanceof Hunger || dmg <= 0 || this.HP > this.HT / 2 && this.HP + this.shielding() - dmg > this.HT / 2 || shield == null || shield.coolingDown())) {
+            if (this.sprite != null) this.sprite.showStatusWithIcon(65280, Integer.toString(this.buff(BrokenSeal.WarriorShield.class).maxShield()), FloatingText.SHIELDING, new Object[0]);
+            shield.activate();
+        }
+        if (bleedSrc == Vorpal.class && dmg > this.shielding() + this.HP) {
+            bleedAmt = 0.0f;
+        }
+        if (bleedAmt > 0.0f) {
+            Bleeding b = this.buff(Bleeding.class);
+            if (b == null) {
+                b = new Bleeding();
+            }
+            b.announced = false;
+            b.attachTo(this);
+            b.set(bleedAmt, bleedSrc);
+            if (this.sprite != null) this.sprite.showStatus(0xFF8800, Messages.titleCase(b.name()) + " " + dmg, new Object[0]);
+            Splash.at(this.sprite.center(), -1.5707963f, 0.52359873f, this.sprite.blood(), 10);
+            return;
+        }
+        int shielded = dmg;
+        dmg = ShieldBuff.processDamage(this, dmg, src);
+        shielded -= dmg;
+        this.HP -= dmg;
+        if (this.HP > 0 && src instanceof Char && ((Char)src).buff(Grim.GrimTracker.class) != null) {
+            float finalChance = ((Char)src).buff(Grim.GrimTracker.class).maxChance;
+            finalChance *= (float)Math.pow((float)(this.HT - this.HP) / (float)this.HT, 2.0);
+            if (Random.Float() < finalChance) {
+                int extraDmg = Math.round((float)this.HP * this.resist(Grim.class));
+                dmg += extraDmg;
+                this.HP -= extraDmg;
+                if (this.sprite != null) this.sprite.emitter().burst(ShadowParticle.UP, 5);
+                if (!this.isAlive() && ((Char)src).buff(Grim.GrimTracker.class).qualifiesForBadge) {
+                    Badges.validateGrimWeapon();
+                }
+            }
+        }
+        if (src instanceof Char && ((Char)src).buff(Kinetic.KineticTracker.class) != null) {
+            int dmgToAdd = 0;
+            if (this.HP < 0 && this.alignment != ((Char)src).alignment) {
+                dmgToAdd = -this.HP;
+                dmgToAdd -= ((Char)src).buff(Kinetic.KineticTracker.class).conservedDamage;
+                dmgToAdd = Math.round((float)dmgToAdd * Weapon.Enchantment.genericProcChanceMultiplier((Char)src));
+            }
+            if (dmgToAdd > 0) {
+                Buff.affect((Char)src, Kinetic.ConservedDamage.class).setBonus(dmgToAdd);
+            } else if (((Char)src).buff(Kinetic.ConservedDamage.class) != null) {
+                ((Char)src).buff(Kinetic.ConservedDamage.class).detach();
+            }
+            ((Char)src).buff(Kinetic.KineticTracker.class).detach();
+        }
+        if (this.sprite != null) {
+            int icon = FloatingText.PHYS_DMG;
+            if (NO_ARMOR_PHYSICAL_SOURCES.contains(src.getClass())) {
+                icon = FloatingText.PHYS_DMG_NO_BLOCK;
+            }
+            if (AntiMagic.RESISTS.contains(src.getClass())) {
+                icon = FloatingText.MAGIC_DMG;
+            }
+            if (src instanceof Pickaxe) {
+                icon = FloatingText.PICK_DMG;
+            }
+            if (src == Dungeon.hero && Dungeon.hero.subClass == HeroSubClass.SNIPER && !Dungeon.level.adjacent(Dungeon.hero.pos, this.pos) && Dungeon.hero.belongings.attackingWeapon() instanceof MissileWeapon) {
+                icon = FloatingText.PHYS_DMG_NO_BLOCK;
+            }
+            if (src == Dungeon.hero && Dungeon.hero.buff(MonkEnergy.MonkAbility.UnarmedAbilityTracker.class) != null) {
+                icon = FloatingText.PHYS_DMG_NO_BLOCK;
+            }
+            if (src instanceof Hunger) {
+                icon = FloatingText.HUNGER;
+            }
+            if (src instanceof Burning) {
+                icon = FloatingText.BURNING;
+            }
+            if (src instanceof Chill || src instanceof Frost) {
+                icon = FloatingText.FROST;
+            }
+            if (src instanceof GeyserTrap || src instanceof StormCloud) {
+                icon = FloatingText.WATER;
+            }
+            if (src instanceof Burning) {
+                icon = FloatingText.BURNING;
+            }
+            if (src instanceof Electricity) {
+                icon = FloatingText.SHOCKING;
+            }
+            if (src instanceof Bleeding) {
+                icon = FloatingText.BLEEDING;
+            }
+            if (src instanceof ToxicGas) {
+                icon = FloatingText.TOXIC;
+            }
+            if (src instanceof Corrosion) {
+                icon = FloatingText.CORROSION;
+            }
+            if (src instanceof Poison) {
+                icon = FloatingText.POISON;
+            }
+            if (src instanceof Ooze) {
+                icon = FloatingText.OOZE;
+            }
+            if (src instanceof Viscosity.DeferedDamage) {
+                icon = FloatingText.DEFERRED;
+            }
+            if (src instanceof Corruption) {
+                icon = FloatingText.CORRUPTION;
+            }
+            if (src instanceof AscensionChallenge) {
+                icon = FloatingText.AMULET;
+            }
+            if ((icon == FloatingText.PHYS_DMG || icon == FloatingText.PHYS_DMG_NO_BLOCK) && hitMissIcon != -1) {
+                if (icon == FloatingText.PHYS_DMG_NO_BLOCK) {
+                    hitMissIcon += 18;
+                }
+                icon = hitMissIcon;
+            }
+            hitMissIcon = -1;
+            if (this.sprite != null) this.sprite.showStatusWithIcon(0xFF0000, Integer.toString(dmg + shielded), icon, new Object[0]);
+        }
+        if (this.HP < 0) {
+            this.HP = 0;
+        }
+        if (!this.isAlive()) {
+            this.die(src);
+        } else if (this.HP == 0 && this.buff(DeathMark.DeathMarkTracker.class) != null) {
+            DeathMark.processFearTheReaper(this);
+        }
+    }
+
+    public void destroy() {
+        this.HP = 0;
+        Actor.remove(this);
+        for (Char ch : Actor.chars().toArray(new Char[0])) {
+            if (ch.buff(Charm.class) != null && ch.buff(Charm.class).object == this.id()) {
+                ch.buff(Charm.class).detach();
+            }
+            if (ch.buff(Dread.class) != null && ch.buff(Dread.class).object == this.id()) {
+                ch.buff(Dread.class).detach();
+            }
+            if (ch.buff(Terror.class) != null && ch.buff(Terror.class).object == this.id()) {
+                ch.buff(Terror.class).detach();
+            }
+            if (ch.buff(SnipersMark.class) != null && ch.buff(SnipersMark.class).object == this.id()) {
+                ch.buff(SnipersMark.class).detach();
+            }
+            if (ch.buff(Talent.FollowupStrikeTracker.class) != null && ch.buff(Talent.FollowupStrikeTracker.class).object == this.id()) {
+                ch.buff(Talent.FollowupStrikeTracker.class).detach();
+            }
+            if (ch.buff(Talent.DeadlyFollowupTracker.class) == null || ch.buff(Talent.DeadlyFollowupTracker.class).object != this.id()) continue;
+            ch.buff(Talent.DeadlyFollowupTracker.class).detach();
+        }
+    }
+
+    public void die(Object src) {
+        if (this.buff(DeathMark.DeathMarkTracker.class) != null) {
+            this.buff(DeathMark.DeathMarkTracker.class).detachOnDeath();
+        }
+        this.destroy();
+        if (src != Chasm.class) {
+            if (this.sprite != null) this.sprite.die();
+            if (!this.flying && Dungeon.level != null && this.sprite instanceof MobSprite && Dungeon.level.map[this.pos] == 0) {
+                ((MobSprite)this.sprite).fall();
+            }
+        }
+    }
+
+    public boolean isAlive() {
+        return this.HP > 0 || this.deathMarked;
+    }
+
+    public boolean isActive() {
+        return this.isAlive();
+    }
+
+    @Override
+    protected void spendConstant(float time) {
+        TimekeepersHourglass.timeFreeze freeze = this.buff(TimekeepersHourglass.timeFreeze.class);
+        if (freeze != null) {
+            freeze.processTime(time);
+            return;
+        }
+        Swiftthistle.TimeBubble bubble = this.buff(Swiftthistle.TimeBubble.class);
+        if (bubble != null) {
+            bubble.processTime(time);
+            return;
+        }
+        super.spendConstant(time);
+    }
+
+    @Override
+    protected void spend(float time) {
+        float timeScale = 1.0f;
+        if (this.buff(Slow.class) != null) {
+            timeScale *= 0.5f;
+        } else if (this.buff(Chill.class) != null) {
+            timeScale *= this.buff(Chill.class).speedFactor();
+        }
+        if (this.buff(Speed.class) != null) {
+            timeScale *= 2.0f;
+        }
+        super.spend(time / timeScale);
+    }
+
+    public synchronized LinkedHashSet<Buff> buffs() {
+        return new LinkedHashSet<Buff>(this.buffs);
+    }
+
+    public synchronized <T extends Buff> HashSet<T> buffs(Class<T> c) {
+        HashSet<T> filtered = new HashSet<T>();
+        for (Buff b : this.buffs) {
+            if (!c.isInstance(b)) continue;
+            filtered.add((T)b);
+        }
+        return filtered;
+    }
+
+    public synchronized <T extends Buff> T buff(Class<T> c) {
+        for (Buff b : this.buffs) {
+            if (b.getClass() != c) continue;
+            return (T)b;
+        }
+        return null;
+    }
+
+    public synchronized boolean isCharmedBy(Char ch) {
+        int chID = ch.id();
+        for (Buff b : this.buffs) {
+            if (!(b instanceof Charm) || ((Charm)b).object != chID) continue;
+            return true;
+        }
+        return false;
+    }
+
+    public synchronized boolean add(Buff buff) {
+        if (this.buff(PotionOfCleansing.Cleanse.class) != null && buff.type == Buff.buffType.NEGATIVE && !(buff instanceof AllyBuff) && !(buff instanceof LostInventory)) {
+            return false;
+        }
+        if (this.sprite != null && this.buff(Challenge.SpectatorFreeze.class) != null) {
+            return false;
+        }
+        this.buffs.add(buff);
+        if (Actor.chars().contains(this)) {
+            Actor.add(buff);
+        }
+        if (this.sprite != null && this.sprite.alive && buff.announced) {
+            switch (buff.type) {
+                case POSITIVE: {
+                    if (this.sprite != null) this.sprite.showStatus(65280, Messages.titleCase(buff.name()), new Object[0]);
+                    break;
+                }
+                case NEGATIVE: {
+                    if (this.sprite != null) this.sprite.showStatus(0xFF8800, Messages.titleCase(buff.name()), new Object[0]);
+                    break;
+                }
+                default: {
+                    if (this.sprite != null) this.sprite.showStatus(0xFFFF00, Messages.titleCase(buff.name()), new Object[0]);
+                }
+            }
+        }
+        return true;
+    }
+
+    public synchronized boolean remove(Buff buff) {
+        this.buffs.remove(buff);
+        Actor.remove(buff);
+        return true;
+    }
+
+    public synchronized void remove(Class<? extends Buff> buffClass) {
+        for (Buff buff : this.buffs(buffClass)) {
+            this.remove(buff);
+        }
+    }
+
+    @Override
+    protected synchronized void onRemove() {
+        for (Buff buff : this.buffs.toArray(new Buff[this.buffs.size()])) {
+            buff.detach();
+        }
+    }
+
+    public synchronized void updateSpriteState() {
+        for (Buff buff : this.buffs) {
+            buff.fx(true);
+        }
+    }
+
+    public float stealth() {
+        float stealth = 0.0f;
+        return stealth += Obfuscation.stealthBoost(this, this.glyphLevel(Obfuscation.class));
+    }
+
+    public final void move(int step) {
+        this.move(step, true);
+    }
+
+    public void move(int step, boolean travelling) {
+        if (travelling && Dungeon.level.adjacent(step, this.pos) && this.buff(Vertigo.class) != null) {
+            if (this.sprite != null) this.sprite.interruptMotion();
+            int newPos = this.pos + PathFinder.NEIGHBOURS8[Random.Int(8)];
+            if (!Dungeon.level.passable[newPos] && !Dungeon.level.avoid[newPos] || this.properties().contains((Object)Property.LARGE) && !Dungeon.level.openSpace[newPos] || Actor.findChar(newPos) != null) {
+                return;
+            }
+            if (this.sprite != null) this.sprite.move(this.pos, newPos);
+            step = newPos;
+        }
+        if (Dungeon.level.map[this.pos] == 6) {
+            Door.leave(this.pos);
+        }
+        this.previousPos = travelling ? this.pos : -1;
+        this.pos = step;
+        if (this != Dungeon.hero) {
+            this.sprite.visible = Dungeon.level.heroFOV[this.pos];
+        }
+        Dungeon.level.occupyCell(this);
+    }
+
+    public int distance(Char other) {
+        return Dungeon.level.distance(this.pos, other.pos);
+    }
+
+    public boolean[] modifyPassable(boolean[] passable) {
+        return passable;
+    }
+
+    public void onMotionComplete() {
+    }
+
+    public void onAttackComplete() {
+        this.next();
+    }
+
+    public void onOperateComplete() {
+        this.next();
+    }
+
+    public float resist(Class effect) {
+        HashSet<Class> resists = new HashSet<Class>(this.resistances);
+        for (Property p : this.properties()) {
+            resists.addAll(p.resistances());
+        }
+        for (Buff b : this.buffs()) {
+            resists.addAll(b.resistances());
+        }
+        float result = 1.0f;
+        for (Class c : resists) {
+            if (!c.isAssignableFrom(effect)) continue;
+            result *= 0.5f;
+        }
+        return result * RingOfElements.resist(this, effect);
+    }
+
+    public boolean isImmune(Class effect) {
+        HashSet<Class> immunes = new HashSet<Class>(this.immunities);
+        for (Property p : this.properties()) {
+            immunes.addAll(p.immunities());
+        }
+        for (Buff b : this.buffs()) {
+            immunes.addAll(b.immunities());
+        }
+        if (this.glyphLevel(Brimstone.class) >= 0) {
+            immunes.add(Burning.class);
+        }
+        for (Class c : immunes) {
+            if (!c.isAssignableFrom(effect)) continue;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isInvulnerable(Class effect) {
+        return this.buff(Challenge.SpectatorFreeze.class) != null || this.buff(Invulnerability.class) != null;
+    }
+
+    public HashSet<Property> properties() {
+        HashSet<Property> props = new HashSet<Property>(this.properties);
+        if (this.buff(ChampionEnemy.Giant.class) != null) {
+            props.add(Property.LARGE);
+        }
+        return props;
+    }
+
+    public static boolean hasProp(Char ch, Property p) {
+        return ch != null && ch.properties().contains((Object)p);
+    }
+
+    public static enum Property {
+        BOSS(new HashSet<Class>(Arrays.asList(Grim.class, GrimTrap.class, ScrollOfRetribution.class, ScrollOfPsionicBlast.class)), new HashSet<Class>(Arrays.asList(AllyBuff.class, Dread.class))),
+        MINIBOSS(new HashSet<Class>(), new HashSet<Class>(Arrays.asList(AllyBuff.class, Dread.class))),
+        BOSS_MINION,
+        UNDEAD,
+        DEMONIC,
+        INORGANIC(new HashSet<Class>(), new HashSet<Class>(Arrays.asList(Bleeding.class, ToxicGas.class, Poison.class))),
+        FIERY(new HashSet<Class>(Arrays.asList(WandOfFireblast.class, Elemental.FireElemental.class)), new HashSet<Class>(Arrays.asList(Burning.class, Blazing.class))),
+        ICY(new HashSet<Class>(Arrays.asList(WandOfFrost.class, Elemental.FrostElemental.class)), new HashSet<Class>(Arrays.asList(Frost.class, Chill.class))),
+        ACIDIC(new HashSet<Class>(Arrays.asList(Corrosion.class)), new HashSet<Class>(Arrays.asList(Ooze.class))),
+        ELECTRIC(new HashSet<Class>(Arrays.asList(WandOfLightning.class, Shocking.class, Potential.class, Electricity.class, ShockingDart.class, Elemental.ShockElemental.class)), new HashSet<Class>()),
+        LARGE,
+        IMMOVABLE(new HashSet<Class>(), new HashSet<Class>(Arrays.asList(Vertigo.class))),
+        OBJECT,
+        STATIC(new HashSet<Class>(), new HashSet<Class>(Arrays.asList(AllyBuff.class, Dread.class, Terror.class, Amok.class, Charm.class, Sleep.class, Paralysis.class, Frost.class, Chill.class, Slow.class, Speed.class)));
+
+        private HashSet<Class> resistances;
+        private HashSet<Class> immunities;
+
+        private Property() {
+            this(new HashSet<Class>(), new HashSet<Class>());
+        }
+
+        private Property(HashSet<Class> resistances, HashSet<Class> immunities) {
+            this.resistances = resistances;
+            this.immunities = immunities;
+        }
+
+        public HashSet<Class> resistances() {
+            return new HashSet<Class>(this.resistances);
+        }
+
+        public HashSet<Class> immunities() {
+            return new HashSet<Class>(this.immunities);
+        }
+    }
+
+    public static enum Alignment {
+        ENEMY,
+        NEUTRAL,
+        ALLY;
+
+    }
+}
+

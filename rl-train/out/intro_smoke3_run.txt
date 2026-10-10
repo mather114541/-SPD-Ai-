@@ -1,0 +1,5 @@
+[env] device=cpu gpu=none
+[train] total_steps=4096 n_steps/iter=2048 obs=1417 act=12
+[iter 1] steps=2048 | pi=-0.0092 vf=51.3574 ent=-2.4782 | roll_reward=0.335 | eval avg_depth=1.00 avg_ret=3.88 deaths=0/8 targets=0/8 | 165s
+[iter 2] steps=4096 | pi=-0.0075 vf=22.0884 ent=-2.4659 | roll_reward=0.263 | eval avg_depth=1.00 avg_ret=1.75 deaths=0/8 targets=0/8 | 285s
+[done] 285s total_steps=4096 saved=C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\out\ppo_intro_smoke3.pt

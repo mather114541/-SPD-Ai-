@@ -1,0 +1,32 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=20000 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... tion $base; python "$base\rl-train\train_ppo.py" --steps 20000 --seed ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 4] steps=8192 | pi=-0.0115 vf=0.0007 ent=-2.4397 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 20s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 8] steps=16384 | pi=-0.0166 vf=0.0014 ent=-2.3943 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 38s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。

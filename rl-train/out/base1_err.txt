@@ -1,0 +1,577 @@
+[GAME] 你获得了：金币。
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你有点饿了。
+[GAME] 你获得了：KAUNAN卷轴。
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+Exception in thread "HeadlessApplication" java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:68)
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:58)
+	at com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions.<init>(WndOptions.java:41)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1$1.<init>(Chasm.java:67)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1.call(Chasm.java:67)
+	at com.watabou.noosa.Game$1.run(Game.java:249)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.executeRunnables(HeadlessApplication.java:154)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.mainLoop(HeadlessApplication.java:126)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication$1.run(HeadlessApplication.java:93)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] @@ 解锁徽章：伏“法” (死于敌方法术攻击)
+[GAME] -- 血色哨卫杀害了你....
+Exception in thread "HeadlessApplication" java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:68)
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:58)
+	at com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions.<init>(WndOptions.java:41)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1$1.<init>(Chasm.java:48)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1.call(Chasm.java:48)
+	at com.watabou.noosa.Game$1.run(Game.java:249)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.executeRunnables(HeadlessApplication.java:154)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.mainLoop(HeadlessApplication.java:126)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication$1.run(HeadlessApplication.java:93)
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] @@ 解锁徽章：伏“法” (死于敌方法术攻击)
+[GAME] -- 血色哨卫杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你将一滴露珠收集到了水袋里。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.handleUnreachableTarget(Mob.java:1165)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1134)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你将一滴露珠收集到了水袋里。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.traps.WornDartTrap$1.act(WornDartTrap.java:96)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：感知符石。
+[GAME] @@ 解锁徽章：伏“法” (死于敌方法术攻击)
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 血色哨卫杀害了你....
+[GAME] -- 下水道巨蛇杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.handleUnreachableTarget(Mob.java:1165)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1134)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：感知符石。
+[GAME] @@ 解锁徽章：伏“法” (死于敌方法术攻击)
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 血色哨卫杀害了你....
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] -- 啮齿小鼠杀害了你....
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.traps.WornDartTrap$1.act(WornDartTrap.java:96)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你将一滴露珠收集到了水袋里。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] -- 啮齿小鼠杀害了你....
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.traps.WornDartTrap$1.act(WornDartTrap.java:96)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 下水道巨蛇杀害了你....
+[GAME] @@ 解锁徽章：窒息 (死于毒气)
+[GAME] -- 你被毒气毒死了...
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] 你获得了：闪现符石。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.traps.WornDartTrap$1.act(WornDartTrap.java:96)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] @@ 解锁徽章：伏“法” (死于敌方法术攻击)
+[GAME] @@ 解锁徽章：新晋地牢人 (进行10场游戏或通关1场游戏)
+[GAME] -- 血色哨卫杀害了你....
+[GAME] -- 下水道巨蛇杀害了你....
+[GAME] ** 你有点饿了。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] -- 你已经饥肠辘辘！
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.handleUnreachableTarget(Mob.java:1165)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1134)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Traceback (most recent call last):
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 341, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 319, in main
+    rollout = make_rollout(env, policy, device, N_STEPS, args.seed, 0.99, 0.95)
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 207, in make_rollout
+    obs, reward, done, _, restarted = env.step(int(action))
+                                      ~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 135, in step
+    obs_ints, fields = self._send_reset(self._cur_seed)
+                       ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 115, in _send_reset
+    raise RuntimeError("SPDEnv reset stuck for seed=%d" % seed)
+RuntimeError: SPDEnv reset stuck for seed=102317

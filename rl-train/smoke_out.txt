@@ -1,0 +1,28 @@
+﻿python : C:\Users\33040\AppData\Local\Doubao\User Data\sandbox_runtime\bases\c98c5042338ed152c6f10ecd8591889f\python\Li
+b\site-packages\torch\_subclasses\functional_tensor.py:368: UserWarning: Failed to initialize NumPy: No module named 'n
+umpy' (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:84.)
+所在位置 行:1 字符: 494
++ ... tion $base; python rl-train\train_ppo.py --steps 4000 --tag smoke --n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\33040\..._numpy.cpp:84.):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  cpu = _conversion_method_template(device=torch.device("cpu"))
+[env] device=cpu gpu=none
+[train] total_steps=4000 n_steps/iter=2048 obs=1417 act=12
+Traceback (most recent call last):
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 281, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 259, in main
+    rollout = make_rollout(env, policy, device, N_STEPS, args.seed, 0.99, 0.95)
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 139, in make_rollout
+    obs, _ = env.reset(seed_base)
+             ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 67, in reset
+    obs, fields = self._read_obs()
+                  ~~~~~~~~~~~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 57, in _read_obs
+    k, v = kv.split("=")
+    ^^^^
+ValueError: not enough values to unpack (expected 2, got 1)

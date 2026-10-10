@@ -1,0 +1,2 @@
+# 大文件用 Git LFS 托管（需要先安装并启用：git lfs install）
+*.onnx filter=lfs diff=lfs merge=lfs -text

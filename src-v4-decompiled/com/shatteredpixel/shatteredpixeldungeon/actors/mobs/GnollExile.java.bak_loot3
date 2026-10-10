@@ -1,0 +1,165 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
+
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Gnoll;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.GnollExileSprite;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.utils.BArray;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
+import java.util.ArrayList;
+
+public class GnollExile
+extends Gnoll {
+    private int seenNotifyCooldown;
+    public static final String SEEN_NOTIF_CD = "seen_notif_cd";
+
+    public GnollExile() {
+        this.spriteClass = GnollExileSprite.class;
+        this.PASSIVE = new Passive();
+        this.WANDERING = new Wandering();
+        this.state = this.PASSIVE;
+        this.defenseSkill = 6;
+        this.HT = 24;
+        this.HP = 24;
+        this.lootChance = 0.0f;
+        this.seenNotifyCooldown = 0;
+    }
+
+    @Override
+    public int damageRoll() {
+        return Random.NormalIntRange(1, 10);
+    }
+
+    @Override
+    public int attackSkill(Char target) {
+        return 15;
+    }
+
+    @Override
+    public int drRoll() {
+        return super.drRoll() + Random.NormalIntRange(0, 1);
+    }
+
+    @Override
+    protected boolean canAttack(Char enemy) {
+        if (Dungeon.level.adjacent(this.pos, enemy.pos)) {
+            return true;
+        }
+        if (Dungeon.level.distance(this.pos, enemy.pos) <= 2) {
+            boolean[] passable = BArray.not(Dungeon.level.solid, null);
+            for (Char ch : Actor.chars()) {
+                passable[ch.pos] = ch == this;
+            }
+            PathFinder.buildDistanceMap(enemy.pos, passable, 2);
+            if (PathFinder.distance[this.pos] <= 2) {
+                return true;
+            }
+        }
+        return super.canAttack(enemy);
+    }
+
+    @Override
+    public void rollToDropLoot() {
+        super.rollToDropLoot();
+        if (Dungeon.hero.lvl > this.maxLvl + 2) {
+            return;
+        }
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add(Generator.randomUsingDefaults());
+        items.add(Generator.randomUsingDefaults());
+        if (Random.Int(2) == 0) {
+            items.add(Generator.randomUsingDefaults());
+        }
+        for (Item item : items) {
+            int ofs;
+            while (Dungeon.level.solid[this.pos + (ofs = PathFinder.NEIGHBOURS9[Random.Int(9)])] && !Dungeon.level.passable[this.pos + ofs]) {
+            }
+            Dungeon.level.drop((Item)item, (int)(this.pos + ofs)).sprite.drop(this.pos);
+        }
+    }
+
+    @Override
+    public void beckon(int cell) {
+        if (this.state != this.PASSIVE) {
+            super.beckon(cell);
+        } else if (this.seenNotifyCooldown <= 0) {
+            this.target = cell;
+        }
+    }
+
+    @Override
+    public String description() {
+        Object desc = super.description();
+        desc = this.state == this.PASSIVE ? (String)desc + "\n\n" + Messages.get(this, "desc_passive", new Object[0]) : (String)desc + "\n\n" + Messages.get(this, "desc_aggro", new Object[0]);
+        return desc;
+    }
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(SEEN_NOTIF_CD, this.seenNotifyCooldown);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        this.seenNotifyCooldown = bundle.getInt(SEEN_NOTIF_CD);
+    }
+
+    private class Passive
+    extends Mob.Wandering {
+        private Passive() {
+            super(GnollExile.this);
+        }
+
+        @Override
+        public boolean act(boolean enemyInFOV, boolean justAlerted) {
+            for (Buff b : GnollExile.this.buffs()) {
+                if (b.type != Buff.buffType.NEGATIVE) continue;
+                GnollExile.this.state = GnollExile.this.WANDERING;
+                return true;
+            }
+            if (GnollExile.this.fieldOfView[Dungeon.hero.pos] && Dungeon.level.heroFOV[GnollExile.this.pos]) {
+                if (GnollExile.this.seenNotifyCooldown <= 0) {
+                    GLog.p(Messages.get(GnollExile.class, "seen_passive", new Object[0]), new Object[0]);
+                }
+                GnollExile.this.seenNotifyCooldown = 30;
+            } else {
+                --GnollExile.this.seenNotifyCooldown;
+            }
+            if (enemyInFOV && justAlerted) {
+                if (Dungeon.level.heroFOV[GnollExile.this.pos]) {
+                    GLog.w(Messages.get(GnollExile.class, "seen_aggro", new Object[0]), new Object[0]);
+                }
+                return this.noticeEnemy();
+            }
+            return this.continueWandering();
+        }
+    }
+
+    private class Wandering
+    extends Mob.Wandering {
+        private Wandering() {
+            super(GnollExile.this);
+        }
+
+        @Override
+        protected boolean noticeEnemy() {
+            GLog.w(Messages.get(GnollExile.class, "seen_aggro", new Object[0]), new Object[0]);
+            return super.noticeEnemy();
+        }
+    }
+}
+

@@ -1,0 +1,99 @@
+Summary for C:\Users\33040\Downloads\ShatteredPD-v4.0.0-Java.jar
+Decompiled with CFR 0.152
+
+
+com.shatteredpixel.shatteredpixeldungeon.items.LiquidMetal
+----------------------------
+
+onSelect(com.shatteredpixel.shatteredpixeldungeon.items.Item )
+  Unable to fully structure code
+
+
+com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSprite
+----------------------------
+
+update()
+  Unable to fully structure code
+
+
+com.badlogic.gdx.graphics.g3d.loader.ObjLoader
+----------------------------
+
+loadModelData(com.badlogic.gdx.files.FileHandle boolean )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.maps.tiled.BaseTmjMapLoader
+----------------------------
+
+loadTileSet(com.badlogic.gdx.utils.JsonValue com.badlogic.gdx.files.FileHandle com.badlogic.gdx.maps.ImageResolver )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.maps.tiled.BaseTmxMapLoader
+----------------------------
+
+loadTileSet(com.badlogic.gdx.utils.XmlReader$Element com.badlogic.gdx.files.FileHandle com.badlogic.gdx.maps.ImageResolver )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.utils.JsonReader
+----------------------------
+
+parse(char[] int int )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.utils.JsonSkimmer
+----------------------------
+
+parse(char[] int int )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.utils.PatternParser
+----------------------------
+
+parse(com.badlogic.gdx.utils.JsonMatcher java.lang.String com.badlogic.gdx.utils.JsonMatcher$Processor )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.utils.XmlReader
+----------------------------
+
+parse(char[] int int )
+  Unable to fully structure code
+
+
+com.badlogic.gdx.utils.compression.lzma.Encoder
+----------------------------
+
+GetOptimum(int )
+  Unable to fully structure code
+
+
+org.lwjgl.opengl.GL
+----------------------------
+
+createCapabilities(boolean java.util.function.IntFunction<org.lwjgl.PointerBuffer> )
+  Unable to fully structure code
+createCapabilitiesWGLDummy()
+  Loose catch block
+
+
+org.lwjgl.system.macosx.MacOSXLibraryBundle
+----------------------------
+
+getWithIdentifier(java.lang.String )
+  Loose catch block
+create(java.lang.String )
+  Loose catch block
+
+
+com.jcraft.jorbis.Drft
+----------------------------
+
+dradfg(int int int int float[] float[] float[] float[] float[] float[] int )
+  Unable to fully structure code
+dradbg(int int int int float[] float[] float[] float[] float[] float[] int )
+  Unable to fully structure code

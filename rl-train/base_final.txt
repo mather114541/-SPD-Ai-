@@ -1,0 +1,130 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=60000 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... tion $base; python rl-train\train_ppo.py --steps 60000 --tag base *>  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 1] steps=2048 | pi=-0.0149 vf=0.0316 ent=-2.4798 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 7s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 2] steps=4096 | pi=-0.0170 vf=0.0013 ent=-2.4658 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 13s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 3] steps=6144 | pi=-0.0152 vf=0.0010 ent=-2.4455 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 19s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 4] steps=8192 | pi=-0.0161 vf=0.0011 ent=-2.4341 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 25s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 5] steps=10240 | pi=-0.0189 vf=0.0009 ent=-2.4084 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 31s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 6] steps=12288 | pi=-0.0206 vf=0.0009 ent=-2.4185 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 37s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 7] steps=14336 | pi=-0.0173 vf=0.0017 ent=-2.3971 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 42s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 8] steps=16384 | pi=-0.0210 vf=0.0009 ent=-2.3986 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 48s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 9] steps=18432 | pi=-0.0195 vf=0.0007 ent=-2.3539 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 54s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 10] steps=20480 | pi=-0.0177 vf=0.0008 ent=-2.3419 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 60s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 11] steps=22528 | pi=-0.0210 vf=0.0007 ent=-2.3761 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 66s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 12] steps=24576 | pi=-0.0196 vf=0.0008 ent=-2.3563 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 72s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 13] steps=26624 | pi=-0.0228 vf=0.0005 ent=-2.3613 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 78s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 14] steps=28672 | pi=-0.0180 vf=0.0012 ent=-2.3754 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 83s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 15] steps=30720 | pi=-0.0182 vf=0.0008 ent=-2.3469 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 89s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 16] steps=32768 | pi=-0.0236 vf=0.0006 ent=-2.3226 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 95s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 17] steps=34816 | pi=-0.0172 vf=0.0005 ent=-2.3156 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 101s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 18] steps=36864 | pi=-0.0145 vf=0.0014 ent=-2.3121 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 106s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 19] steps=38912 | pi=-0.0202 vf=0.0021 ent=-2.2891 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 112s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 20] steps=40960 | pi=-0.0168 vf=0.0006 ent=-2.2815 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 118s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 21] steps=43008 | pi=-0.0112 vf=0.0009 ent=-2.2608 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 124s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 22] steps=45056 | pi=-0.0173 vf=0.0004 ent=-2.1993 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 130s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 23] steps=47104 | pi=-0.0152 vf=0.0006 ent=-2.1744 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 136s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 24] steps=49152 | pi=-0.0198 vf=0.0006 ent=-2.1917 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 142s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 25] steps=51200 | pi=-0.0189 vf=0.0008 ent=-2.2008 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/8 targets=0/8 | 148s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1819)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1510)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:157)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[iter 26] steps=53248 | pi=-0.0153 vf=0.0016 ent=-2.2149 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=1/8 targets=0/8 | 177s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 27] steps=55296 | pi=-0.0124 vf=0.0006 ent=-2.2254 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.50 deaths=0/8 targets=0/8 | 183s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 28] steps=57344 | pi=-0.0137 vf=0.0005 ent=-2.2193 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.50 deaths=0/8 targets=0/8 | 189s
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 29] steps=59392 | pi=-0.0158 vf=0.0006 ent=-2.2481 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.50 deaths=0/8 targets=0/8 | 195s
+[done] 195s total_steps=59392 saved=C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\out\ppo_base.pt

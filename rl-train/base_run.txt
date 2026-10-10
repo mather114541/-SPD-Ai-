@@ -1,0 +1,29 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=60000 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... tion $base; python rl-train\train_ppo.py --steps 60000 --tag base *>  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1819)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1510)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:157)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[debug] non-OK meta= 'ERR java.lang.NullPointerException'

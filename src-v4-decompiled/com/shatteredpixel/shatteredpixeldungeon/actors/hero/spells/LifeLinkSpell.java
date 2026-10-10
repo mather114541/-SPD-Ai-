@@ -1,0 +1,89 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells;
+
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FlavourBuff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.LifeLink;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.cleric.PowerOfMany;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.ClericSpell;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.Stasis;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Beam;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.HolyTome;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.DungeonTilemap;
+import com.watabou.noosa.audio.Sample;
+
+public class LifeLinkSpell
+extends ClericSpell {
+    public static LifeLinkSpell INSTANCE = new LifeLinkSpell();
+
+    @Override
+    public int icon() {
+        return 65;
+    }
+
+    @Override
+    public String desc() {
+        return Messages.get(this, "desc", 4 + 2 * Dungeon.hero.pointsInTalent(Talent.LIFE_LINK), 30 + 5 * Dungeon.hero.pointsInTalent(Talent.LIFE_LINK)) + "\n\n" + Messages.get(this, "charge_cost", (int)this.chargeUse(Dungeon.hero));
+    }
+
+    @Override
+    public boolean canCast(Hero hero) {
+        return super.canCast(hero) && hero.hasTalent(Talent.LIFE_LINK) && (PowerOfMany.getPoweredAlly() != null || Stasis.getStasisAlly() != null);
+    }
+
+    @Override
+    public float chargeUse(Hero hero) {
+        return 2.0f;
+    }
+
+    @Override
+    public void onCast(HolyTome tome, Hero hero) {
+        int duration = Math.round(6.67f + 3.33f * (float)Dungeon.hero.pointsInTalent(Talent.LIFE_LINK));
+        Char ally = PowerOfMany.getPoweredAlly();
+        if (ally != null) {
+            hero.sprite.zap(ally.pos);
+            hero.sprite.parent.add(new Beam.HealthRay(hero.sprite.center(), ally.sprite.center()));
+            Sample.INSTANCE.play("sounds/ray.mp3");
+            Buff.prolong((Char)hero, LifeLink.class, (float)((float)duration)).object = ally.id();
+        } else {
+            ally = Stasis.getStasisAlly();
+            hero.sprite.operate(hero.pos);
+            hero.sprite.parent.add(new Beam.HealthRay(DungeonTilemap.tileCenterToWorld(hero.pos), hero.sprite.center()));
+            Sample.INSTANCE.play("sounds/ray.mp3");
+        }
+        Buff.prolong((Char)ally, LifeLink.class, (float)((float)duration)).object = hero.id();
+        Buff.prolong(ally, LifeLinkSpellBuff.class, duration);
+        if (ally == Stasis.getStasisAlly()) {
+            ally.buff(LifeLink.class).clearTime();
+            ally.buff(LifeLinkSpellBuff.class).clearTime();
+        }
+        hero.spendAndNext(1.0f);
+        this.onSpellCast(tome, hero);
+    }
+
+    public static class LifeLinkSpellBuff
+    extends FlavourBuff {
+        public LifeLinkSpellBuff() {
+            this.type = Buff.buffType.POSITIVE;
+        }
+
+        @Override
+        public int icon() {
+            return 74;
+        }
+
+        @Override
+        public float iconFadePercent() {
+            int duration = Math.round(6.67f + 3.33f * (float)Dungeon.hero.pointsInTalent(Talent.LIFE_LINK));
+            return Math.max(0.0f, ((float)duration - this.visualcooldown()) / (float)duration);
+        }
+    }
+}
+

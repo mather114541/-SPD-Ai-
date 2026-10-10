@@ -1,0 +1,21 @@
+﻿reset depth=1 pos=99 hp-meta3=20
+a=0 -> pos=68 depth=1 reward=0 done=False restarted=False
+a=1 -> pos=68 depth=1 reward=0 done=False restarted=False
+a=2 -> pos=68 depth=1 reward=0 done=False restarted=False
+a=3 -> pos=67 depth=1 reward=0 done=False restarted=False
+a=4 -> pos=68 depth=1 reward=0 done=False restarted=False
+a=5 -> pos=97 depth=1 reward=0 done=False restarted=False
+a=6 -> pos=127 depth=1 reward=0 done=False restarted=False
+a=7 -> pos=158 depth=1 reward=0 done=False restarted=False
+a=8 -> pos=158 depth=1 reward=0 done=False restarted=False
+--- spam action 4 x10 ---
+step0 pos=159 depth=1 reward=0 done=False
+step1 pos=160 depth=1 reward=0 done=False
+step2 pos=161 depth=1 reward=0 done=False
+step3 pos=161 depth=1 reward=0 done=False
+step4 pos=161 depth=1 reward=0 done=False
+step5 pos=161 depth=1 reward=0 done=False
+step6 pos=161 depth=1 reward=0 done=False
+step7 pos=161 depth=1 reward=0 done=False
+step8 pos=161 depth=1 reward=0 done=False
+step9 pos=161 depth=1 reward=0 done=False

@@ -1,0 +1,1780 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.scenes;
+
+import com.shatteredpixel.shatteredpixeldungeon.Badges;
+import com.shatteredpixel.shatteredpixeldungeon.Chrome;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.GamesInProgress;
+import com.shatteredpixel.shatteredpixeldungeon.Rankings;
+import com.shatteredpixel.shatteredpixeldungeon.SPDAction;
+import com.shatteredpixel.shatteredpixeldungeon.SPDSettings;
+import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
+import com.shatteredpixel.shatteredpixeldungeon.Statistics;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.AscensionChallenge;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.ChampionEnemy;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.DemonSpawner;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Ghoul;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mimic;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Snake;
+import com.shatteredpixel.shatteredpixeldungeon.effects.BannerSprites;
+import com.shatteredpixel.shatteredpixeldungeon.effects.BlobEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.CheckedCell;
+import com.shatteredpixel.shatteredpixeldungeon.effects.EmoIcon;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Flare;
+import com.shatteredpixel.shatteredpixeldungeon.effects.FloatingText;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Ripple;
+import com.shatteredpixel.shatteredpixeldungeon.effects.SpellSprite;
+import com.shatteredpixel.shatteredpixeldungeon.effects.TargetedCell;
+import com.shatteredpixel.shatteredpixeldungeon.items.Ankh;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
+import com.shatteredpixel.shatteredpixeldungeon.items.Honeypot;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.DriedRose;
+import com.shatteredpixel.shatteredpixeldungeon.items.journal.Guidebook;
+import com.shatteredpixel.shatteredpixeldungeon.items.potions.Potion;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.InventoryScroll;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.DimensionalSundial;
+import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.TrinketCatalyst;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MeleeWeapon;
+import com.shatteredpixel.shatteredpixeldungeon.journal.Bestiary;
+import com.shatteredpixel.shatteredpixeldungeon.journal.Document;
+import com.shatteredpixel.shatteredpixeldungeon.journal.Journal;
+import com.shatteredpixel.shatteredpixeldungeon.journal.Notes;
+import com.shatteredpixel.shatteredpixeldungeon.levels.Level;
+import com.shatteredpixel.shatteredpixeldungeon.levels.RegularLevel;
+import com.shatteredpixel.shatteredpixeldungeon.levels.rooms.Room;
+import com.shatteredpixel.shatteredpixeldungeon.levels.rooms.secret.SecretRoom;
+import com.shatteredpixel.shatteredpixeldungeon.levels.traps.Trap;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Plant;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.CellSelector;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.HeroSelectScene;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.InterlevelScene;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.PixelScene;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.StartScene;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.TitleScene;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.DiscardedItemSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.HeroSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ItemSprite;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.CustomTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.DungeonTerrainTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.DungeonTileSheet;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.DungeonWallsTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.FogOfWar;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.GridTileMap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.RaisedTerrainTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.TerrainFeaturesTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.WallBlockingTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.WallOcclusionTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.ui.ActionIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.AttackIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Banner;
+import com.shatteredpixel.shatteredpixeldungeon.ui.BossHealthBar;
+import com.shatteredpixel.shatteredpixeldungeon.ui.CharHealthIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.GameLog;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Icons;
+import com.shatteredpixel.shatteredpixeldungeon.ui.InventoryPane;
+import com.shatteredpixel.shatteredpixeldungeon.ui.LootIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.MenuPane;
+import com.shatteredpixel.shatteredpixeldungeon.ui.QuickSlotButton;
+import com.shatteredpixel.shatteredpixeldungeon.ui.ResumeIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.RightClickMenu;
+import com.shatteredpixel.shatteredpixeldungeon.ui.StatusPane;
+import com.shatteredpixel.shatteredpixeldungeon.ui.StyledButton;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Tag;
+import com.shatteredpixel.shatteredpixeldungeon.ui.TargetHealthIndicator;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Toast;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Toolbar;
+import com.shatteredpixel.shatteredpixeldungeon.ui.Window;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndBag;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndGame;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndHero;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndInfoCell;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndInfoItem;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndInfoMob;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndInfoPlant;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndInfoTrap;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndKeyBindings;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndMessage;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndResurrect;
+import com.shatteredpixel.shatteredpixeldungeon.windows.WndUpgrade;
+import com.watabou.gltextures.TextureCache;
+import com.watabou.glwrap.Blending;
+import com.watabou.input.ControllerHandler;
+import com.watabou.input.KeyBindings;
+import com.watabou.input.PointerEvent;
+import com.watabou.noosa.Camera;
+import com.watabou.noosa.Game;
+import com.watabou.noosa.Gizmo;
+import com.watabou.noosa.Group;
+import com.watabou.noosa.Image;
+import com.watabou.noosa.NoosaScript;
+import com.watabou.noosa.NoosaScriptNoLighting;
+import com.watabou.noosa.PointerArea;
+import com.watabou.noosa.SkinnedBlock;
+import com.watabou.noosa.Visual;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.noosa.particles.Emitter;
+import com.watabou.noosa.tweeners.Tweener;
+import com.watabou.utils.Callback;
+import com.watabou.utils.GameMath;
+import com.watabou.utils.Point;
+import com.watabou.utils.PointF;
+import com.watabou.utils.Random;
+import com.watabou.utils.RectF;
+import com.watabou.utils.SparseArray;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Locale;
+
+public class GameScene
+extends PixelScene {
+    static GameScene scene;
+    private SkinnedBlock water;
+    private DungeonTerrainTilemap tiles;
+    private GridTileMap visualGrid;
+    private WallOcclusionTilemap occlusion;
+    private TerrainFeaturesTilemap terrainFeatures;
+    private RaisedTerrainTilemap raisedTerrain;
+    private DungeonWallsTilemap walls;
+    private WallBlockingTilemap wallBlocking;
+    private FogOfWar fog;
+    private HeroSprite hero;
+    private MenuPane menu;
+    private StatusPane status;
+    private BossHealthBar boss;
+    private GameLog log;
+    private static CellSelector cellSelector;
+    private Group terrain;
+    private Group customTiles;
+    private Group levelVisuals;
+    private Group customTerrain;
+    private Group levelWallVisuals;
+    private Group customWalls;
+    private Group ripples;
+    private Group plants;
+    private Group traps;
+    private Group heaps;
+    private Group mobs;
+    private Group floorEmitters;
+    private Group emitters;
+    private Group effects;
+    private Group gases;
+    private Group spells;
+    private Group statuses;
+    private Group emoicons;
+    private Group overFogEffects;
+    private Group checkedCells;
+    private Group targetedCells;
+    private Group healthIndicators;
+    private InventoryPane inventory;
+    private static boolean invVisible;
+    private Toolbar toolbar;
+    private Toast prompt;
+    private AttackIndicator attack;
+    private LootIndicator loot;
+    private ActionIndicator action;
+    private ResumeIndicator resume;
+    private static Thread actorThread;
+    private ArrayList<Gizmo> toDestroy;
+    private float notifyDelay;
+    public static boolean updateItemDisplays;
+    public static boolean tagDisappeared;
+    public static boolean updateTags;
+    private static float waterOfs;
+    private static Point lastOffset;
+    private boolean tagAttack;
+    private boolean tagLoot;
+    private boolean tagAction;
+    private boolean tagResume;
+    private static WndBag.ItemSelector savedSelector;
+    private static final CellSelector.Listener defaultCellListener;
+
+    public GameScene() {
+        this.inGameScene = true;
+        this.toDestroy = new ArrayList();
+        this.notifyDelay = 0.016666668f;
+        this.tagAttack = false;
+        this.tagLoot = false;
+        this.tagAction = false;
+        this.tagResume = false;
+    }
+
+    /*
+     * WARNING - void declaration
+     */
+    @Override
+    public void create() {
+        TrinketCatalyst cata;
+        Iterator<Char> blocker;
+        float screentop;
+        if (Dungeon.hero == null || Dungeon.level == null) {
+            ShatteredPixelDungeon.switchNoFade(TitleScene.class);
+            return;
+        }
+        Dungeon.level.playLevelMusic();
+        SPDSettings.lastClass(Dungeon.hero.heroClass.ordinal());
+        super.create();
+        Camera.main.zoom(GameMath.gate(minZoom, defaultZoom + SPDSettings.zoom(), maxZoom));
+        Camera.main.edgeScroll.set(1.0f);
+        switch (SPDSettings.cameraFollow()) {
+            default: {
+                Camera.main.setFollowDeadzone(0.0f);
+                break;
+            }
+            case 3: {
+                Camera.main.setFollowDeadzone(0.2f);
+                break;
+            }
+            case 2: {
+                Camera.main.setFollowDeadzone(0.5f);
+                break;
+            }
+            case 1: {
+                Camera.main.setFollowDeadzone(0.9f);
+            }
+        }
+        RectF insets = this.getCommonInsets();
+        float largeInsetTop = Game.platform.getSafeInsets((int)2).scale((float)(1.0f / (float)GameScene.defaultZoom)).top;
+        scene = this;
+        this.terrain = new Group();
+        this.add(this.terrain);
+        this.water = new SkinnedBlock((float)(Dungeon.level.width() * 16), (float)(Dungeon.level.height() * 16), Dungeon.level.waterTex()){
+
+            @Override
+            protected NoosaScript script() {
+                return NoosaScriptNoLighting.get();
+            }
+
+            @Override
+            public void draw() {
+                Blending.disable();
+                super.draw();
+                Blending.enable();
+            }
+        };
+        this.water.autoAdjust = true;
+        this.terrain.add(this.water);
+        this.ripples = new Group();
+        this.terrain.add(this.ripples);
+        DungeonTileSheet.setupVariance(Dungeon.level.map.length, Dungeon.seedCurDepth());
+        this.tiles = new DungeonTerrainTilemap();
+        this.terrain.add(this.tiles);
+        this.customTiles = new Group();
+        this.terrain.add(this.customTiles);
+        this.visualGrid = new GridTileMap();
+        this.terrain.add(this.visualGrid);
+        this.occlusion = new WallOcclusionTilemap();
+        this.terrain.add(this.occlusion);
+        this.terrainFeatures = new TerrainFeaturesTilemap(Dungeon.level.plants, Dungeon.level.traps);
+        this.terrain.add(this.terrainFeatures);
+        this.customTerrain = new Group();
+        this.terrain.add(this.customTerrain);
+        this.levelVisuals = Dungeon.level.addVisuals();
+        this.add(this.levelVisuals);
+        this.floorEmitters = new Group();
+        this.add(this.floorEmitters);
+        this.heaps = new Group();
+        this.add(this.heaps);
+        for (Heap heap : Dungeon.level.heaps.valueList()) {
+            this.addHeapSprite(heap);
+        }
+        this.emitters = new Group();
+        this.effects = new Group();
+        this.healthIndicators = new Group();
+        this.emoicons = new Group();
+        this.overFogEffects = new Group();
+        this.mobs = new Group();
+        this.add(this.mobs);
+        this.hero = new HeroSprite();
+        this.hero.place(Dungeon.hero.pos);
+        this.hero.updateArmor();
+        this.mobs.add(this.hero);
+        for (Mob mob : Dungeon.level.mobs) {
+            this.addMobSprite(mob);
+        }
+        this.raisedTerrain = new RaisedTerrainTilemap();
+        this.add(this.raisedTerrain);
+        this.walls = new DungeonWallsTilemap();
+        this.add(this.walls);
+        this.customWalls = new Group();
+        this.add(this.customWalls);
+        this.levelWallVisuals = Dungeon.level.addWallVisuals();
+        this.add(this.levelWallVisuals);
+        this.wallBlocking = new WallBlockingTilemap();
+        this.add(this.wallBlocking);
+        this.add(this.emitters);
+        this.add(this.effects);
+        this.gases = new Group();
+        this.add(this.gases);
+        for (Blob blob : Dungeon.level.blobs.values()) {
+            blob.emitter = null;
+            this.addBlobSprite(blob);
+        }
+        this.fog = new FogOfWar(Dungeon.level.width(), Dungeon.level.height());
+        this.add(this.fog);
+        this.spells = new Group();
+        this.add(this.spells);
+        this.add(this.overFogEffects);
+        this.checkedCells = new Group();
+        this.add(this.checkedCells);
+        this.targetedCells = new Group();
+        this.add(this.targetedCells);
+        for (TargetedCell cell : TargetedCell.cells.valueList()) {
+            cell.reset(cell.pos, cell.time);
+            this.targetedCells.add(cell);
+        }
+        for (CustomTilemap visual : Dungeon.level.customTiles) {
+            this.addCustomTile(visual);
+        }
+        for (CustomTilemap visual : Dungeon.level.customTerrain) {
+            this.addCustomTerrain(visual);
+        }
+        for (CustomTilemap visual : Dungeon.level.customWalls) {
+            this.addCustomWall(visual);
+        }
+        this.statuses = new Group();
+        this.add(this.statuses);
+        this.add(this.healthIndicators);
+        this.add(new TargetHealthIndicator());
+        this.add(this.emoicons);
+        cellSelector = new CellSelector(this.tiles);
+        this.add(cellSelector);
+        int uiSize = SPDSettings.interfaceSize();
+        float heroPaneExtraWidth = insets.left;
+        float menuBarMaxLeft = (float)GameScene.uiCamera.width - insets.right - 31.0f;
+        int hpBarMaxWidth = 50;
+        float[] buffBarRowLimits = new float[9];
+        float[] buffBarRowAdjusts = new float[9];
+        if (largeInsetTop == 0.0f && insets.top > 0.0f) {
+            RectF cutout = Game.platform.getDisplayCutout().scale(1.0f / (float)defaultZoom);
+            if (cutout.top < 30.0f && cutout.left < 20.0f && cutout.right > 12.0f) {
+                heroPaneExtraWidth = Math.max(heroPaneExtraWidth, cutout.right - 12.0f);
+                heroPaneExtraWidth = Math.min(heroPaneExtraWidth, (float)GameScene.uiCamera.width - 135.0f);
+            } else if (cutout.top < 20.0f && cutout.left < menuBarMaxLeft + 31.0f && cutout.right > menuBarMaxLeft) {
+                menuBarMaxLeft = Math.min(menuBarMaxLeft, cutout.left - 31.0f);
+                menuBarMaxLeft = Math.max(menuBarMaxLeft, 104.0f);
+            } else if (cutout.left < 78.0f && cutout.top < 4.0f && cutout.right > 32.0f) {
+                hpBarMaxWidth = Math.round(cutout.left - 32.0f + 4.0f);
+                hpBarMaxWidth = Math.max(hpBarMaxWidth, 21);
+            }
+            if (cutout.left < 84.0f && cutout.top < 10.0f && cutout.right > 32.0f && cutout.bottom > 11.0f) {
+                int i = 1;
+                int rowTop = 11;
+                while (cutout.bottom > (float)rowTop) {
+                    if (i == 1 || cutout.bottom > (float)(rowTop + 2)) {
+                        buffBarRowLimits[i] = cutout.left - 32.0f + 3.0f;
+                    } else {
+                        buffBarRowAdjusts[i] = cutout.bottom - (float)rowTop + 1.0f;
+                        rowTop = (int)((float)rowTop + buffBarRowAdjusts[i]);
+                    }
+                    ++i;
+                    rowTop += 8;
+                }
+            }
+        }
+        if ((screentop = largeInsetTop) == 0.0f && uiSize == 0) {
+            screentop -= 1.0f;
+        }
+        this.menu = new MenuPane();
+        this.menu.camera = uiCamera;
+        this.menu.setPos(menuBarMaxLeft, screentop);
+        this.add(this.menu);
+        float extraRight = (float)GameScene.uiCamera.width - (menuBarMaxLeft + 31.0f);
+        if (extraRight > 0.0f) {
+            SkinnedBlock bar = new SkinnedBlock(extraRight, 20.0f, TextureCache.createSolid(-2013265920));
+            bar.x = (float)GameScene.uiCamera.width - extraRight;
+            bar.camera = uiCamera;
+            this.add(bar);
+            blocker = new PointerArea((float)GameScene.uiCamera.width - extraRight, 0.0f, extraRight, 20.0f);
+            ((PointerArea)((Object)blocker)).camera = uiCamera;
+            this.add((Gizmo)((Object)blocker));
+        }
+        this.status = new StatusPane(SPDSettings.interfaceSize() > 0);
+        this.status.camera = uiCamera;
+        StatusPane.heroPaneExtraWidth = heroPaneExtraWidth;
+        StatusPane.hpBarMaxWidth = hpBarMaxWidth;
+        StatusPane.buffBarRowMaxWidths = buffBarRowLimits;
+        StatusPane.buffBarRowAdjusts = buffBarRowAdjusts;
+        this.status.setRect(insets.left, uiSize > 0 ? (float)(GameScene.uiCamera.height - 39) - insets.bottom : screentop, (float)GameScene.uiCamera.width - insets.left - insets.right, 0.0f);
+        this.add(this.status);
+        if (uiSize < 2 && largeInsetTop != 0.0f) {
+            SkinnedBlock bar = new SkinnedBlock(GameScene.uiCamera.width, largeInsetTop, TextureCache.createSolid(-2013265920));
+            bar.camera = uiCamera;
+            this.add(bar);
+            blocker = new PointerArea(0.0f, 0.0f, GameScene.uiCamera.width, largeInsetTop);
+            ((PointerArea)((Object)blocker)).camera = uiCamera;
+            this.add((Gizmo)((Object)blocker));
+        }
+        this.boss = new BossHealthBar();
+        this.boss.camera = uiCamera;
+        this.boss.setPos(((float)GameScene.uiCamera.width - this.boss.width()) / 2.0f, screentop + (float)(GameScene.landscape() ? 7 : 26));
+        if (buffBarRowLimits[2] != 0.0f) {
+            this.boss.setPos(this.boss.left(), this.boss.top() + 7.0f);
+        } else if (buffBarRowAdjusts[2] != 0.0f) {
+            this.boss.setPos(this.boss.left(), this.boss.top() + buffBarRowAdjusts[2]);
+        }
+        this.add(this.boss);
+        this.resume = new ResumeIndicator();
+        this.resume.camera = uiCamera;
+        this.add(this.resume);
+        this.action = new ActionIndicator();
+        this.action.camera = uiCamera;
+        this.add(this.action);
+        this.loot = new LootIndicator();
+        this.loot.camera = uiCamera;
+        this.add(this.loot);
+        this.attack = new AttackIndicator();
+        this.attack.camera = uiCamera;
+        this.add(this.attack);
+        this.log = new GameLog();
+        this.log.camera = uiCamera;
+        this.log.newLine();
+        this.add(this.log);
+        if (uiSize > 0) {
+            this.bringToFront(this.status);
+        }
+        this.toolbar = new Toolbar();
+        this.toolbar.camera = uiCamera;
+        this.add(this.toolbar);
+        if (uiSize == 2) {
+            this.inventory = new InventoryPane();
+            this.inventory.camera = uiCamera;
+            this.inventory.setPos((float)GameScene.uiCamera.width - this.inventory.width() - insets.right, (float)GameScene.uiCamera.height - this.inventory.height() - insets.bottom);
+            this.add(this.inventory);
+            this.toolbar.setRect(insets.left, (float)GameScene.uiCamera.height - this.toolbar.height() - this.inventory.height() - insets.bottom, (float)GameScene.uiCamera.width - insets.right, this.toolbar.height());
+        } else {
+            this.toolbar.setRect(insets.left, (float)GameScene.uiCamera.height - this.toolbar.height() - insets.bottom, (float)GameScene.uiCamera.width - insets.right, this.toolbar.height());
+        }
+        if (insets.bottom > 0.0f) {
+            SkinnedBlock bar = new SkinnedBlock(GameScene.uiCamera.width, insets.bottom, TextureCache.createSolid(-2013265920));
+            bar.camera = uiCamera;
+            bar.y = (float)GameScene.uiCamera.height - insets.bottom;
+            this.add(bar);
+            blocker = new PointerArea(0.0f, (float)GameScene.uiCamera.height - insets.bottom, GameScene.uiCamera.width, insets.bottom);
+            ((PointerArea)((Object)blocker)).camera = uiCamera;
+            this.add((Gizmo)((Object)blocker));
+        }
+        GameScene.layoutTags();
+        switch (InterlevelScene.mode) {
+            case RESURRECT: {
+                Sample.INSTANCE.play("sounds/teleport.mp3");
+                ScrollOfTeleportation.appearVFX(Dungeon.hero);
+                SpellSprite.show(Dungeon.hero, 4);
+                new Flare(5, 16.0f).color(0xFFFF00, true).show(this.hero, 4.0f);
+                break;
+            }
+            case RETURN: {
+                if (Dungeon.level.pit[Dungeon.hero.pos] && !Dungeon.hero.flying) {
+                    ShatteredPixelDungeon.runOnRenderThread(new Callback(){
+
+                        @Override
+                        public void call() {
+                            ScrollOfTeleportation.appearVFX(Dungeon.hero);
+                        }
+                    });
+                    break;
+                }
+                ScrollOfTeleportation.appearVFX(Dungeon.hero);
+                break;
+            }
+            case DESCEND: 
+            case FALL: {
+                if (!Dungeon.hero.isAlive()) break;
+                Badges.validateNoKilling();
+            }
+        }
+        ArrayList dropped = (ArrayList)Dungeon.droppedItems.get(Dungeon.depth);
+        if (dropped != null) {
+            for (Item item : dropped) {
+                int pos = Dungeon.level.randomRespawnCell(null);
+                if (pos == -1) {
+                    pos = Dungeon.level.entrance();
+                }
+                if (item instanceof Potion) {
+                    ((Potion)item).shatter(pos);
+                    continue;
+                }
+                if (item instanceof Plant.Seed && !Dungeon.isChallenged(8)) {
+                    Dungeon.level.plant((Plant.Seed)item, pos);
+                    continue;
+                }
+                if (item instanceof Honeypot) {
+                    Dungeon.level.drop(((Honeypot)item).shatter(null, pos), pos);
+                    continue;
+                }
+                Dungeon.level.drop(item, pos);
+            }
+            Dungeon.droppedItems.remove(Dungeon.depth);
+        }
+        Dungeon.hero.next();
+        switch (InterlevelScene.mode) {
+            case DESCEND: 
+            case FALL: 
+            case CONTINUE: {
+                Camera.main.snapTo(this.hero.center().x, this.hero.center().y - 16.0f * ((float)defaultZoom / Camera.main.zoom));
+                break;
+            }
+            case ASCEND: {
+                Camera.main.snapTo(this.hero.center().x, this.hero.center().y + 16.0f * ((float)defaultZoom / Camera.main.zoom));
+                break;
+            }
+            default: {
+                Camera.main.snapTo(this.hero.center().x, this.hero.center().y);
+            }
+        }
+        Camera.main.panTo(this.hero.center(), 2.5f);
+        if (InterlevelScene.mode != InterlevelScene.Mode.NONE) {
+            void var13_33;
+            if (Dungeon.depth == Statistics.deepestFloor && (InterlevelScene.mode == InterlevelScene.Mode.DESCEND || InterlevelScene.mode == InterlevelScene.Mode.FALL)) {
+                GLog.h(Messages.get(this, "descend", new Object[0]), Dungeon.depth);
+                Sample.INSTANCE.play("sounds/descend.mp3");
+                for (Char char_ : Actor.chars()) {
+                    if (!(char_ instanceof DriedRose.GhostHero)) continue;
+                    ((DriedRose.GhostHero)char_).sayAppeared();
+                }
+                int spawnersAbove = Statistics.spawnersAlive;
+                if (spawnersAbove > 0 && Dungeon.depth <= 25) {
+                    for (Mob m : Dungeon.level.mobs) {
+                        if (!(m instanceof DemonSpawner) || !((DemonSpawner)m).spawnRecorded) continue;
+                        --spawnersAbove;
+                    }
+                    if (spawnersAbove > 0) {
+                        GLog.newLine();
+                        if (Dungeon.bossLevel()) {
+                            GLog.n(Messages.get(this, "spawner_warn_final", new Object[0]), new Object[0]);
+                        } else {
+                            GLog.n(Messages.get(this, "spawner_warn", new Object[0]), new Object[0]);
+                        }
+                    }
+                }
+            } else if (InterlevelScene.mode == InterlevelScene.Mode.RESET) {
+                GLog.h(Messages.get(this, "warp", new Object[0]), new Object[0]);
+            } else if (InterlevelScene.mode == InterlevelScene.Mode.RESURRECT) {
+                GLog.h(Messages.get(this, "resurrect", new Object[0]), Dungeon.depth);
+            } else {
+                GLog.h(Messages.get(this, "return", new Object[0]), Dungeon.depth);
+            }
+            if (Dungeon.hero.hasTalent(Talent.ROGUES_FORESIGHT) && Dungeon.level instanceof RegularLevel && Dungeon.branch == 0) {
+                int reqSecrets = Dungeon.level.feeling == Level.Feeling.SECRETS ? 2 : 1;
+                for (Room r : ((RegularLevel)Dungeon.level).rooms()) {
+                    if (!(r instanceof SecretRoom)) continue;
+                    --reqSecrets;
+                }
+                Random.pushGenerator(Dungeon.seedCurDepth() + 1L);
+                if (reqSecrets <= 0 && Random.Int(4) < 2 + Dungeon.hero.pointsInTalent(Talent.ROGUES_FORESIGHT)) {
+                    GLog.p(Messages.get(this, "secret_hint", new Object[0]), new Object[0]);
+                }
+                Random.popGenerator();
+            }
+            boolean unspentTalents = false;
+            boolean bl = true;
+            while (var13_33 <= Dungeon.hero.talents.size()) {
+                if (Dungeon.hero.talentPointsAvailable((int)var13_33) > 0) {
+                    unspentTalents = true;
+                    break;
+                }
+                ++var13_33;
+            }
+            if (unspentTalents) {
+                GLog.newLine();
+                GLog.w(Messages.get(Dungeon.hero, "unspent", new Object[0]), new Object[0]);
+                StatusPane.talentBlink = 10.0f;
+                WndHero.lastIdx = 1;
+            }
+            switch (Dungeon.level.feeling) {
+                case CHASM: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.CHASM_FLOOR);
+                    break;
+                }
+                case WATER: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.WATER_FLOOR);
+                    break;
+                }
+                case GRASS: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.GRASS_FLOOR);
+                    break;
+                }
+                case DARK: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.DARK_FLOOR);
+                    break;
+                }
+                case LARGE: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.LARGE_FLOOR);
+                    break;
+                }
+                case TRAPS: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.TRAPS_FLOOR);
+                    break;
+                }
+                case SECRETS: {
+                    GLog.w(Dungeon.level.feeling.desc(), new Object[0]);
+                    Notes.add(Notes.Landmark.SECRETS_FLOOR);
+                }
+            }
+            for (Mob mob : Dungeon.level.mobs) {
+                if (mob.buffs(ChampionEnemy.class).isEmpty()) continue;
+                GLog.w(Messages.get(ChampionEnemy.class, "warn", new Object[0]), new Object[0]);
+            }
+            if (Dungeon.hero.buff(AscensionChallenge.class) != null) {
+                Dungeon.hero.buff(AscensionChallenge.class).saySwitch();
+            }
+            DimensionalSundial.sundialWarned = true;
+            if (DimensionalSundial.spawnMultiplierAtCurrentTime() > 1.0f) {
+                GLog.w(Messages.get(DimensionalSundial.class, "warning", new Object[0]), new Object[0]);
+            } else {
+                DimensionalSundial.sundialWarned = false;
+            }
+            InterlevelScene.mode = InterlevelScene.Mode.NONE;
+        }
+        if (SPDSettings.intro()) {
+            if (Document.ADVENTURERS_GUIDE.isPageFound("Intro")) {
+                GameScene.flashForDocument(Document.ADVENTURERS_GUIDE, "Intro");
+            } else if (ControllerHandler.isControllerConnected()) {
+                GameLog.wipe();
+                GLog.p(Messages.get(GameScene.class, "tutorial_move_controller", new Object[0]), new Object[0]);
+            } else if (SPDSettings.interfaceSize() == 0) {
+                GameLog.wipe();
+                GLog.p(Messages.get(GameScene.class, "tutorial_move_mobile", new Object[0]), new Object[0]);
+            } else {
+                GameLog.wipe();
+                GLog.p(Messages.get(GameScene.class, "tutorial_move_desktop", new Object[0]), new Object[0]);
+            }
+            this.toolbar.active = false;
+            this.toolbar.visible = false;
+            this.status.active = false;
+            this.status.visible = false;
+            if (this.inventory != null) {
+                this.inventory.active = false;
+                this.inventory.visible = false;
+            }
+        }
+        if (!SPDSettings.intro() && Rankings.INSTANCE.totalNumber > 0 && !Document.ADVENTURERS_GUIDE.isPageRead("Dieing")) {
+            GameScene.flashForDocument(Document.ADVENTURERS_GUIDE, "Dieing");
+        }
+        if ((cata = Dungeon.hero.belongings.getItem(TrinketCatalyst.class)) != null && cata.hasRolledTrinkets()) {
+            this.addToFront(new TrinketCatalyst.WndTrinket(cata));
+        }
+        if (!invVisible) {
+            GameScene.toggleInvPane();
+        }
+        this.fadeIn();
+        if (!Dungeon.hero.isAlive()) {
+            void var13_37;
+            Object var13_36 = null;
+            for (Ankh i : Dungeon.hero.belongings.getAllItems(Ankh.class)) {
+                if (i.isBlessed()) continue;
+                Ankh ankh = i;
+            }
+            if (var13_37 != null && GamesInProgress.gameExists(GamesInProgress.curSlot)) {
+                this.add(new WndResurrect((Ankh)var13_37));
+            } else {
+                GameScene.gameOver();
+            }
+        }
+    }
+
+    @Override
+    public void destroy() {
+        if (!this.waitForActorThread(4500, true)) {
+            Throwable t = new Throwable();
+            t.setStackTrace(actorThread.getStackTrace());
+            throw new RuntimeException("timeout waiting for actor thread! ", t);
+        }
+        Emitter.freezeEmitters = false;
+        scene = null;
+        Badges.saveGlobal();
+        Journal.saveGlobal();
+        super.destroy();
+    }
+
+    public static void endActorThread() {
+        if (actorThread != null && actorThread.isAlive()) {
+            Actor.keepActorThreadAlive = false;
+            actorThread.interrupt();
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    public boolean waitForActorThread(int msToWait, boolean interrupt) {
+        if (actorThread == null || !actorThread.isAlive()) {
+            return true;
+        }
+        Thread thread = actorThread;
+        synchronized (thread) {
+            if (interrupt) {
+                actorThread.interrupt();
+            }
+            try {
+                actorThread.wait(msToWait);
+            }
+            catch (InterruptedException e) {
+                ShatteredPixelDungeon.reportException(e);
+            }
+            return !Actor.processing();
+        }
+    }
+
+    @Override
+    public synchronized void onPause() {
+        try {
+            if (!Dungeon.hero.ready) {
+                this.waitForActorThread(500, false);
+            }
+            Dungeon.saveAll();
+            Badges.saveGlobal();
+            Journal.saveGlobal();
+        }
+        catch (IOException e) {
+            ShatteredPixelDungeon.reportException(e);
+        }
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    @Override
+    public synchronized void update() {
+        lastOffset = null;
+        if (updateItemDisplays) {
+            updateItemDisplays = false;
+            QuickSlotButton.refresh();
+            InventoryPane.refresh();
+            if (ActionIndicator.action instanceof MeleeWeapon.Charger) {
+                ActionIndicator.refresh();
+            }
+        }
+        if (Dungeon.hero == null || scene == null) {
+            return;
+        }
+        super.update();
+        if (this.notifyDelay > 0.0f) {
+            this.notifyDelay -= Game.elapsed;
+        }
+        if (!Emitter.freezeEmitters) {
+            this.water.offsetTo(0.0f, waterOfs -= 5.0f * Game.elapsed);
+            waterOfs = this.water.offsetY();
+        }
+        if (!Actor.processing() && Dungeon.hero.isAlive()) {
+            if (actorThread == null || !actorThread.isAlive()) {
+                actorThread = new Thread(){
+
+                    @Override
+                    public void run() {
+                        Actor.process();
+                    }
+                };
+                if (Runtime.getRuntime().availableProcessors() == 1) {
+                    actorThread.setPriority(4);
+                }
+                actorThread.setName("SHPD Actor Thread");
+                Thread.currentThread().setName("SHPD Render Thread");
+                Actor.keepActorThreadAlive = true;
+                actorThread.start();
+            } else if (this.notifyDelay <= 0.0f) {
+                this.notifyDelay += 0.016666668f;
+                Thread thread = actorThread;
+                synchronized (thread) {
+                    actorThread.notify();
+                }
+            }
+        }
+        if (Dungeon.hero.ready && Dungeon.hero.paralysed == 0) {
+            this.log.newLine();
+        }
+        if (updateTags) {
+            this.tagAttack = this.attack.active;
+            this.tagLoot = this.loot.visible;
+            this.tagAction = this.action.visible;
+            this.tagResume = this.resume.visible;
+            GameScene.layoutTags();
+        } else if (this.tagAttack != this.attack.active || this.tagLoot != this.loot.visible || this.tagAction != this.action.visible || this.tagResume != this.resume.visible) {
+            boolean tagAppearing = this.attack.active && !this.tagAttack || this.loot.visible && !this.tagLoot || this.action.visible && !this.tagAction || this.resume.visible && !this.tagResume;
+            this.tagAttack = this.attack.active;
+            this.tagLoot = this.loot.visible;
+            this.tagAction = this.action.visible;
+            this.tagResume = this.resume.visible;
+            if (tagAppearing) {
+                GameScene.layoutTags();
+            } else {
+                tagDisappeared = true;
+            }
+        }
+        cellSelector.enable(Dungeon.hero.ready);
+        if (!this.toDestroy.isEmpty()) {
+            for (Gizmo g : this.toDestroy) {
+                g.destroy();
+            }
+            this.toDestroy.clear();
+        }
+    }
+
+    @Override
+    public synchronized Gizmo erase(Gizmo g) {
+        Gizmo result = super.erase(g);
+        if (result instanceof Window) {
+            lastOffset = ((Window)result).getOffset();
+        }
+        return result;
+    }
+
+    public static void layoutTags() {
+        float y;
+        updateTags = false;
+        if (scene == null) {
+            return;
+        }
+        if (GameScene.scene.inventory != null && GameScene.scene.inventory.visible && GameScene.uiCamera.width < 460 && GameScene.uiCamera.height < 300) {
+            Camera.main.setCenterOffset(0.0f, (float)Math.min(300 - GameScene.uiCamera.height, 460 - GameScene.uiCamera.width) / Camera.main.zoom);
+        } else {
+            Camera.main.setCenterOffset(0.0f, 0.0f);
+        }
+        RectF insets = Game.platform.getSafeInsets(3);
+        insets = insets.scale(1.0f / GameScene.uiCamera.zoom);
+        boolean tagsOnLeft = SPDSettings.flipTags();
+        float tagWidth = (float)Tag.SIZE + (tagsOnLeft ? insets.left : insets.right);
+        float tagLeft = tagsOnLeft ? 0.0f : (float)GameScene.uiCamera.width - tagWidth;
+        float f = y = SPDSettings.interfaceSize() == 0 ? GameScene.scene.toolbar.top() - 2.0f : GameScene.scene.status.top() - 2.0f;
+        if (SPDSettings.interfaceSize() == 0) {
+            if (tagsOnLeft) {
+                GameScene.scene.log.setRect(tagWidth, y, (float)GameScene.uiCamera.width - tagWidth - insets.right, 0.0f);
+            } else {
+                GameScene.scene.log.setRect(insets.left, y, (float)GameScene.uiCamera.width - tagWidth - insets.left, 0.0f);
+            }
+        } else if (tagsOnLeft) {
+            GameScene.scene.log.setRect(tagWidth, y, 160.0f - tagWidth, 0.0f);
+        } else {
+            GameScene.scene.log.setRect(insets.left, y, 160.0f - insets.left, 0.0f);
+        }
+        float pos = GameScene.scene.toolbar.top();
+        if (tagsOnLeft && SPDSettings.interfaceSize() > 0) {
+            pos = GameScene.scene.status.top();
+        }
+        if (GameScene.scene.tagAttack) {
+            GameScene.scene.attack.setRect(tagLeft, pos - (float)Tag.SIZE, tagWidth, Tag.SIZE);
+            GameScene.scene.attack.flip(tagsOnLeft);
+            pos = GameScene.scene.attack.top();
+        }
+        if (GameScene.scene.tagLoot) {
+            GameScene.scene.loot.setRect(tagLeft, pos - (float)Tag.SIZE, tagWidth, Tag.SIZE);
+            GameScene.scene.loot.flip(tagsOnLeft);
+            pos = GameScene.scene.loot.top();
+        }
+        if (GameScene.scene.tagAction) {
+            GameScene.scene.action.setRect(tagLeft, pos - (float)Tag.SIZE, tagWidth, Tag.SIZE);
+            GameScene.scene.action.flip(tagsOnLeft);
+            pos = GameScene.scene.action.top();
+        }
+        if (GameScene.scene.tagResume) {
+            GameScene.scene.resume.setRect(tagLeft, pos - (float)Tag.SIZE, tagWidth, Tag.SIZE);
+            GameScene.scene.resume.flip(tagsOnLeft);
+        }
+    }
+
+    @Override
+    protected void onBackPressed() {
+        if (!GameScene.cancel()) {
+            this.add(new WndGame());
+        }
+    }
+
+    public void addCustomTile(CustomTilemap visual) {
+        this.customTiles.add(visual.create());
+    }
+
+    public void addCustomTerrain(CustomTilemap visual) {
+        this.customTerrain.add(visual.create());
+    }
+
+    public void addCustomWall(CustomTilemap visual) {
+        this.customWalls.add(visual.create());
+    }
+
+    private void addHeapSprite(Heap heap) {
+        ItemSprite sprite = heap.sprite = (ItemSprite)this.heaps.recycle(ItemSprite.class);
+        sprite.revive();
+        sprite.link(heap);
+        this.heaps.add(sprite);
+    }
+
+    private void addDiscardedSprite(Heap heap) {
+        heap.sprite = (DiscardedItemSprite)this.heaps.recycle(DiscardedItemSprite.class);
+        heap.sprite.revive();
+        heap.sprite.link(heap);
+        this.heaps.add(heap.sprite);
+    }
+
+    private void addBlobSprite(Blob gas) {
+        if (gas.emitter == null) {
+            this.gases.add(new BlobEmitter(gas));
+        }
+    }
+
+    private synchronized void addMobSprite(Mob mob) {
+        CharSprite sprite = mob.sprite();
+        sprite.visible = sprite.visibleOutOfFFOV || Dungeon.level.heroFOV[mob.pos];
+        this.mobs.add(sprite);
+        sprite.link(mob);
+        GameScene.sortMobSprites();
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    public static void sortMobSprites() {
+        if (scene != null) {
+            GameScene gameScene = scene;
+            synchronized (gameScene) {
+                GameScene.scene.mobs.sort(new Comparator(){
+
+                    public int compare(Object a, Object b) {
+                        if (a instanceof Visual && b instanceof Visual) {
+                            return (int)Math.signum(((Visual)a).y + ((Visual)a).height() - (((Visual)b).y + ((Visual)b).height()));
+                        }
+                        if (a instanceof Visual) {
+                            return -1;
+                        }
+                        if (b instanceof Visual) {
+                            return 1;
+                        }
+                        return 0;
+                    }
+                });
+            }
+        }
+    }
+
+    private synchronized void prompt(String text) {
+        if (this.prompt != null) {
+            this.prompt.killAndErase();
+            this.toDestroy.add(this.prompt);
+            this.prompt = null;
+        }
+        if (text != null) {
+            this.prompt = new Toast(text){
+
+                @Override
+                protected void onClose() {
+                    GameScene.cancel();
+                }
+            };
+            this.prompt.camera = uiCamera;
+            this.prompt.setPos(((float)GameScene.uiCamera.width - this.prompt.width()) / 2.0f, GameScene.uiCamera.height - 60);
+            if (this.inventory != null && this.inventory.visible && this.prompt.right() > this.inventory.left() - 10.0f) {
+                this.prompt.setPos(this.inventory.left() - this.prompt.width() - 10.0f, this.prompt.top());
+            }
+            this.add(this.prompt);
+        }
+    }
+
+    private void showBanner(Banner banner) {
+        banner.camera = uiCamera;
+        float offset = Camera.main.centerOffset.y;
+        banner.x = GameScene.align(uiCamera, ((float)GameScene.uiCamera.width - banner.width) / 2.0f);
+        banner.y = GameScene.align(uiCamera, ((float)GameScene.uiCamera.height - banner.height) / 2.0f - 32.0f - offset);
+        this.addToFront(banner);
+    }
+
+    public static void add(Blob gas) {
+        Actor.add(gas);
+        if (scene != null) {
+            scene.addBlobSprite(gas);
+        }
+    }
+
+    public static void add(Heap heap) {
+        if (scene != null) {
+            heap.autoExplored = true;
+            scene.addHeapSprite(heap);
+        }
+    }
+
+    public static void discard(Heap heap) {
+        if (scene != null) {
+            scene.addDiscardedSprite(heap);
+        }
+    }
+
+    public static void add(Mob mob) {
+        GameScene.add(mob, 0.0f);
+    }
+
+    public static void addSprite(Mob mob) {
+        scene.addMobSprite(mob);
+    }
+
+    public static void add(Mob mob, float delay) {
+        Dungeon.level.mobs.add(mob);
+        delay = (float)Math.ceil(Actor.now() + delay) - Actor.now();
+        if (scene != null) {
+            scene.addMobSprite(mob);
+            Actor.addDelayed(mob, delay);
+            mob.spendToWhole();
+        }
+    }
+
+    public static void add(EmoIcon icon) {
+        GameScene.scene.emoicons.add(icon);
+    }
+
+    public static void add(CharHealthIndicator indicator) {
+        if (scene != null) {
+            GameScene.scene.healthIndicators.add(indicator);
+        }
+    }
+
+    public static void add(CustomTilemap t, boolean wall) {
+        if (scene == null) {
+            return;
+        }
+        if (wall) {
+            scene.addCustomWall(t);
+        } else {
+            scene.addCustomTile(t);
+        }
+    }
+
+    public static void effect(Visual effect) {
+        if (scene != null) {
+            GameScene.scene.effects.add(effect);
+        }
+    }
+
+    public static void effectOverFog(Visual effect) {
+        if (scene != null) {
+            GameScene.scene.overFogEffects.add(effect);
+        }
+    }
+
+    public static CheckedCell checkedCell(int pos, int source) {
+        if (scene != null) {
+            CheckedCell check = (CheckedCell)GameScene.scene.checkedCells.recycle(CheckedCell.class);
+            check.reset(pos, source);
+            return check;
+        }
+        return null;
+    }
+
+    public static TargetedCell targetedCell(int pos, int color, float delay) {
+        return GameScene.targetedCell(pos, delay);
+    }
+
+    /*
+     * WARNING - Removed try catching itself - possible behaviour change.
+     */
+    public static TargetedCell targetedCell(int pos, float delay) {
+        if (scene != null) {
+            SparseArray<TargetedCell> sparseArray = TargetedCell.cells;
+            synchronized (sparseArray) {
+                if (TargetedCell.cells.containsKey(pos)) {
+                    TargetedCell cell = (TargetedCell)TargetedCell.cells.get(pos);
+                    cell.reset(pos, Actor.now() + delay);
+                    return cell;
+                }
+            }
+            TargetedCell cell = (TargetedCell)GameScene.scene.targetedCells.recycle(TargetedCell.class);
+            cell.reset(pos, Actor.now() + delay);
+            return cell;
+        }
+        return null;
+    }
+
+    public static Ripple ripple(int pos) {
+        if (scene != null) {
+            Ripple ripple = (Ripple)GameScene.scene.ripples.recycle(Ripple.class);
+            ripple.reset(pos);
+            return ripple;
+        }
+        return null;
+    }
+
+    public static synchronized SpellSprite spellSprite() {
+        return (SpellSprite)GameScene.scene.spells.recycle(SpellSprite.class);
+    }
+
+    public static synchronized Emitter emitter() {
+        if (scene != null) {
+            Emitter emitter = (Emitter)GameScene.scene.emitters.recycle(Emitter.class);
+            emitter.revive();
+            return emitter;
+        }
+        return null;
+    }
+
+    public static synchronized Emitter floorEmitter() {
+        if (scene != null) {
+            Emitter emitter = (Emitter)GameScene.scene.floorEmitters.recycle(Emitter.class);
+            emitter.revive();
+            return emitter;
+        }
+        return null;
+    }
+
+    public static FloatingText status() {
+        return scene != null ? (FloatingText)GameScene.scene.statuses.recycle(FloatingText.class) : null;
+    }
+
+    public static void pickUp(Item item, int pos) {
+        if (scene != null) {
+            GameScene.scene.toolbar.pickup(item, pos);
+        }
+    }
+
+    public static void pickUpJournal(Item item, int pos) {
+        if (scene != null) {
+            GameScene.scene.menu.pickup(item, pos);
+        }
+    }
+
+    public static void flashForDocument(Document doc, String page) {
+        if (scene != null) {
+            if (doc == Document.ADVENTURERS_GUIDE) {
+                if (!page.equals("Intro")) {
+                    if (SPDSettings.interfaceSize() == 0) {
+                        GLog.p(Messages.get(Guidebook.class, "hint_mobile", new Object[0]), new Object[0]);
+                    } else {
+                        GLog.p(Messages.get(Guidebook.class, "hint_desktop", KeyBindings.getKeyName(KeyBindings.getFirstKeyForAction(SPDAction.JOURNAL, ControllerHandler.isControllerConnected()))), new Object[0]);
+                    }
+                }
+                Dungeon.hero.sprite.showStatus(65280, Messages.get(Guidebook.class, "hint_status", new Object[0]), new Object[0]);
+            }
+            GameScene.scene.menu.flashForPage(doc, page);
+        }
+    }
+
+    public static void endIntro() {
+        if (scene != null) {
+            SPDSettings.intro(false);
+            scene.add(new Tweener(scene, 2.0f){
+
+                @Override
+                protected void updateValues(float progress) {
+                    if (progress <= 0.5f) {
+                        GameScene.scene.status.alpha(2.0f * progress);
+                        GameScene.scene.status.active = true;
+                        GameScene.scene.status.visible = true;
+                        GameScene.scene.toolbar.active = false;
+                        GameScene.scene.toolbar.visible = false;
+                        if (GameScene.scene.inventory != null) {
+                            GameScene.scene.inventory.active = false;
+                            GameScene.scene.inventory.visible = false;
+                        }
+                    } else {
+                        GameScene.scene.status.alpha(1.0f);
+                        GameScene.scene.status.active = true;
+                        GameScene.scene.status.visible = true;
+                        GameScene.scene.toolbar.alpha((progress - 0.5f) * 2.0f);
+                        GameScene.scene.toolbar.active = true;
+                        GameScene.scene.toolbar.visible = true;
+                        if (GameScene.scene.inventory != null) {
+                            GameScene.scene.inventory.active = true;
+                            GameScene.scene.inventory.visible = true;
+                            GameScene.scene.inventory.alpha((progress - 0.5f) * 2.0f);
+                        }
+                    }
+                }
+            });
+            GameLog.wipe();
+            if (SPDSettings.interfaceSize() == 0) {
+                GLog.p(Messages.get(GameScene.class, "tutorial_ui_mobile", new Object[0]), new Object[0]);
+            } else {
+                GLog.p(Messages.get(GameScene.class, "tutorial_ui_desktop", KeyBindings.getKeyName(KeyBindings.getFirstKeyForAction(SPDAction.HERO_INFO, ControllerHandler.isControllerConnected())), KeyBindings.getKeyName(KeyBindings.getFirstKeyForAction(SPDAction.INVENTORY, ControllerHandler.isControllerConnected()))), new Object[0]);
+            }
+            for (int i = 0; i < Dungeon.level.length(); ++i) {
+                if (Dungeon.level.map[i] != 16) continue;
+                Dungeon.level.discover(i);
+                GameScene.discoverTile(i, 16);
+            }
+        }
+    }
+
+    public static void updateKeyDisplay() {
+        if (scene != null && GameScene.scene.menu != null) {
+            GameScene.scene.menu.updateKeys();
+        }
+    }
+
+    public static void showlevelUpStars() {
+        if (scene != null && GameScene.scene.status != null) {
+            GameScene.scene.status.showStarParticles();
+        }
+    }
+
+    public static void updateAvatar() {
+        if (scene != null && GameScene.scene.status != null) {
+            GameScene.scene.status.updateAvatar();
+        }
+    }
+
+    public static void resetMap() {
+        if (scene != null) {
+            GameScene.scene.tiles.map(Dungeon.level.map, Dungeon.level.width());
+            GameScene.scene.occlusion.map(Dungeon.level.map, Dungeon.level.width());
+            GameScene.scene.visualGrid.map(Dungeon.level.map, Dungeon.level.width());
+            GameScene.scene.terrainFeatures.map(Dungeon.level.map, Dungeon.level.width());
+            GameScene.scene.raisedTerrain.map(Dungeon.level.map, Dungeon.level.width());
+            GameScene.scene.walls.map(Dungeon.level.map, Dungeon.level.width());
+        }
+        GameScene.updateFog();
+    }
+
+    public static void updateMap() {
+        if (scene != null) {
+            GameScene.scene.tiles.updateMap();
+            GameScene.scene.occlusion.updateMap();
+            GameScene.scene.visualGrid.updateMap();
+            GameScene.scene.terrainFeatures.updateMap();
+            GameScene.scene.raisedTerrain.updateMap();
+            GameScene.scene.walls.updateMap();
+            GameScene.updateFog();
+        }
+    }
+
+    public static void updateMap(int cell) {
+        if (scene != null) {
+            GameScene.scene.tiles.updateMapCell(cell);
+            GameScene.scene.occlusion.updateMapCell(cell);
+            GameScene.scene.visualGrid.updateMapCell(cell);
+            GameScene.scene.terrainFeatures.updateMapCell(cell);
+            GameScene.scene.raisedTerrain.updateMapCell(cell);
+            GameScene.scene.walls.updateMapCell(cell);
+            GameScene.updateFog(cell, 1);
+        }
+    }
+
+    public static void plantSeed(int cell) {
+        if (scene != null) {
+            GameScene.scene.terrainFeatures.growPlant(cell);
+        }
+    }
+
+    public static void discoverTile(int pos, int oldValue) {
+        if (scene != null) {
+            GameScene.scene.tiles.discover(pos, oldValue);
+        }
+    }
+
+    public static void show(Window wnd) {
+        if (scene != null) {
+            GameScene.cancel();
+            if (GameScene.scene.inventory != null && GameScene.scene.inventory.visible) {
+                Point offsetToInherit = null;
+                for (Gizmo g : GameScene.scene.members) {
+                    if (!(g instanceof Window)) continue;
+                    offsetToInherit = ((Window)g).getOffset();
+                }
+                if (lastOffset != null) {
+                    offsetToInherit = lastOffset;
+                }
+                if (offsetToInherit != null && !offsetToInherit.isZero()) {
+                    wnd.offset(offsetToInherit);
+                    wnd.boundOffsetWithMargin(3);
+                }
+            }
+            scene.addToFront(wnd);
+        }
+    }
+
+    public static boolean showingWindow() {
+        if (scene == null) {
+            return false;
+        }
+        for (Gizmo g : GameScene.scene.members) {
+            if (!(g instanceof Window)) continue;
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean interfaceBlockingHero() {
+        if (scene == null) {
+            return false;
+        }
+        if (GameScene.showingWindow()) {
+            return true;
+        }
+        return GameScene.scene.inventory != null && GameScene.scene.inventory.isSelecting();
+    }
+
+    public static void toggleInvPane() {
+        if (scene != null && GameScene.scene.inventory != null) {
+            if (GameScene.scene.inventory.visible) {
+                invVisible = false;
+                GameScene.scene.inventory.active = false;
+                GameScene.scene.inventory.visible = false;
+                GameScene.scene.toolbar.setPos(GameScene.scene.toolbar.left(), (float)GameScene.uiCamera.height - GameScene.scene.toolbar.height());
+            } else {
+                invVisible = true;
+                GameScene.scene.inventory.active = true;
+                GameScene.scene.inventory.visible = true;
+                GameScene.scene.toolbar.setPos(GameScene.scene.toolbar.left(), GameScene.scene.inventory.top() - GameScene.scene.toolbar.height());
+            }
+            GameScene.layoutTags();
+        }
+    }
+
+    public static void centerNextWndOnInvPane() {
+        if (scene != null && GameScene.scene.inventory != null && GameScene.scene.inventory.visible) {
+            lastOffset = new Point((int)GameScene.scene.inventory.centerX() - GameScene.uiCamera.width / 2, (int)GameScene.scene.inventory.centerY() - GameScene.uiCamera.height / 2);
+        }
+    }
+
+    public static void nextWndOffset(Point ofs) {
+        if (scene != null) {
+            lastOffset = ofs;
+        }
+    }
+
+    public static void updateFog() {
+        if (scene != null) {
+            GameScene.scene.fog.updateFog();
+            GameScene.scene.wallBlocking.updateMap();
+        }
+    }
+
+    public static void updateFog(int x, int y, int w, int h) {
+        if (scene != null) {
+            GameScene.scene.fog.updateFogArea(x, y, w, h);
+            GameScene.scene.wallBlocking.updateArea(x, y, w, h);
+        }
+    }
+
+    public static void updateFog(int cell, int radius) {
+        if (scene != null) {
+            GameScene.scene.fog.updateFog(cell, radius);
+            GameScene.scene.wallBlocking.updateArea(cell, radius);
+        }
+    }
+
+    public static void afterObserve() {
+        if (scene != null) {
+            for (Mob mob : Dungeon.level.mobs.toArray(new Mob[0])) {
+                if (mob.sprite != null) {
+                    if (mob instanceof Mimic && mob.state == mob.PASSIVE && ((Mimic)mob).stealthy() && Dungeon.level.visited[mob.pos]) {
+                        mob.sprite.visible = true;
+                    } else {
+                        boolean bl = mob.sprite.visible = mob.sprite.visibleOutOfFFOV || Dungeon.level.heroFOV[mob.pos];
+                    }
+                }
+                if (!(mob instanceof Ghoul)) continue;
+                for (Ghoul.GhoulLifeLink link : mob.buffs(Ghoul.GhoulLifeLink.class)) {
+                    link.updateVisibility();
+                }
+            }
+        }
+    }
+
+    public static void flash(int color) {
+        GameScene.flash(color, true);
+    }
+
+    public static void flash(final int color, final boolean lightmode) {
+        if (scene != null) {
+            ShatteredPixelDungeon.runOnRenderThread(new Callback(){
+
+                @Override
+                public void call() {
+                    if (scene != null) {
+                        if (color > 0 && color < 0x1000000) {
+                            scene.fadeIn(0xFF000000 | color, lightmode);
+                        } else {
+                            scene.fadeIn(color, lightmode);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    public static void gameOver() {
+        if (scene == null) {
+            return;
+        }
+        final Banner gameOver = new Banner(BannerSprites.get(BannerSprites.Type.GAME_OVER));
+        gameOver.show(0, 2.0f);
+        scene.showBanner(gameOver);
+        StyledButton restart = new StyledButton(Chrome.Type.GREY_BUTTON_TR, Messages.get(StartScene.class, "new", new Object[0]), 9){
+
+            @Override
+            protected void onClick() {
+                GamesInProgress.selectedClass = Dungeon.hero.heroClass;
+                GamesInProgress.curSlot = GamesInProgress.firstEmpty();
+                ShatteredPixelDungeon.switchScene(HeroSelectScene.class);
+            }
+
+            @Override
+            public void update() {
+                this.alpha((float)Math.pow(gameOver.am, 2.0));
+                super.update();
+            }
+        };
+        restart.icon(Icons.get(Icons.ENTER));
+        restart.alpha(0.0f);
+        restart.camera = uiCamera;
+        float offset = Camera.main.centerOffset.y;
+        restart.setSize(Math.max(80.0f, restart.reqWidth()), 20.0f);
+        restart.setPos(GameScene.align(uiCamera, ((float)restart.camera.width - restart.width()) / 2.0f), GameScene.align(uiCamera, ((float)restart.camera.height - restart.height()) / 2.0f + 8.0f - offset));
+        scene.add(restart);
+        StyledButton menu = new StyledButton(Chrome.Type.GREY_BUTTON_TR, Messages.get(WndKeyBindings.class, "menu", new Object[0]), 9){
+
+            @Override
+            protected void onClick() {
+                GameScene.show(new WndGame());
+            }
+
+            @Override
+            public void update() {
+                this.alpha((float)Math.pow(gameOver.am, 2.0));
+                super.update();
+            }
+        };
+        menu.icon(Icons.get(Icons.PREFS));
+        menu.alpha(0.0f);
+        menu.camera = uiCamera;
+        menu.setSize(Math.max(80.0f, menu.reqWidth()), 20.0f);
+        menu.setPos(GameScene.align(uiCamera, ((float)menu.camera.width - menu.width()) / 2.0f), restart.bottom() + 2.0f);
+        scene.add(menu);
+    }
+
+    public static void bossSlain() {
+        if (Dungeon.hero.isAlive()) {
+            Banner bossSlain = new Banner(BannerSprites.get(BannerSprites.Type.BOSS_SLAIN));
+            bossSlain.show(0xFFFFFF, 0.3f, 5.0f);
+            scene.showBanner(bossSlain);
+            Sample.INSTANCE.play("sounds/boss.mp3");
+        }
+    }
+
+    public static void handleCell(int cell) {
+        cellSelector.select(cell, 0);
+    }
+
+    public static void selectCell(CellSelector.Listener listener) {
+        if (GameScene.cellSelector.listener != null && GameScene.cellSelector.listener != defaultCellListener) {
+            GameScene.cellSelector.listener.onSelect(null);
+        }
+        GameScene.cellSelector.listener = listener;
+        GameScene.cellSelector.enabled = Dungeon.hero.ready;
+        if (scene != null) {
+            scene.prompt(listener.prompt());
+        }
+    }
+
+    public static boolean cancelCellSelector() {
+        if (GameScene.cellSelector.listener != null && GameScene.cellSelector.listener != defaultCellListener) {
+            cellSelector.resetKeyHold();
+            cellSelector.cancel();
+            return true;
+        }
+        return false;
+    }
+
+    public static WndBag selectItem(WndBag.ItemSelector listener) {
+        GameScene.cancel();
+        if (scene != null) {
+            if (GameScene.scene.inventory != null && GameScene.scene.inventory.visible && !GameScene.showingWindow()) {
+                GameScene.scene.inventory.setSelector(listener);
+                return null;
+            }
+            WndBag wnd = WndBag.getBag(listener);
+            GameScene.show(wnd);
+            return wnd;
+        }
+        return null;
+    }
+
+    @Override
+    public synchronized void saveWindows() {
+        if (this.members == null) {
+            return;
+        }
+        super.saveWindows();
+        if (scene != null && GameScene.scene.inventory != null && GameScene.scene.inventory.getSelector() != null) {
+            savedSelector = GameScene.scene.inventory.getSelector();
+        } else {
+            for (Gizmo g : this.members.toArray(new Gizmo[0])) {
+                if (g instanceof WndBag) {
+                    savedSelector = ((WndBag)g).getSelector();
+                    continue;
+                }
+                if (g instanceof InventoryScroll.WndConfirmCancel) {
+                    savedSelector = ((InventoryScroll.WndConfirmCancel)g).getItemSelector();
+                    continue;
+                }
+                if (!(g instanceof WndUpgrade)) continue;
+                savedSelector = ((WndUpgrade)g).getItemSelector();
+            }
+        }
+    }
+
+    @Override
+    public synchronized void restoreWindows() {
+        super.restoreWindows();
+        if (savedSelector != null) {
+            if (scene != null && GameScene.scene.inventory != null) {
+                GameScene.scene.inventory.setSelector(savedSelector);
+            } else {
+                this.addToFront(new WndBag(Dungeon.hero.belongings.backpack, savedSelector));
+            }
+            savedSelector = null;
+        }
+    }
+
+    public static boolean cancel() {
+        cellSelector.resetKeyHold();
+        if (Dungeon.hero != null && (Dungeon.hero.curAction != null || Dungeon.hero.resting)) {
+            Dungeon.hero.curAction = null;
+            Dungeon.hero.resting = false;
+            return true;
+        }
+        return GameScene.cancelCellSelector();
+    }
+
+    public static void ready() {
+        GameScene.selectCell(defaultCellListener);
+        QuickSlotButton.cancel();
+        InventoryPane.cancelTargeting();
+        if (scene != null && GameScene.scene.toolbar != null) {
+            GameScene.scene.toolbar.examining = false;
+        }
+        if (tagDisappeared) {
+            tagDisappeared = false;
+            updateTags = true;
+        }
+    }
+
+    public static void checkKeyHold() {
+        cellSelector.processKeyHold();
+    }
+
+    public static void resetKeyHold() {
+        cellSelector.resetKeyHold();
+    }
+
+    public static void examineCell(Integer cell) {
+        if (cell == null || cell < 0 || cell > Dungeon.level.length() || !Dungeon.level.visited[cell] && !Dungeon.level.mapped[cell]) {
+            return;
+        }
+        final ArrayList<Object> objects = GameScene.getObjectsAtCell(cell);
+        if (objects.isEmpty()) {
+            GameScene.show(new WndInfoCell(cell));
+        } else if (objects.size() == 1) {
+            GameScene.examineObject(objects.get(0));
+        } else {
+            String[] names = GameScene.getObjectNames(objects).toArray(new String[0]);
+            GameScene.show(new WndOptions(Icons.get(Icons.INFO), Messages.get(GameScene.class, "choose_examine", new Object[0]), Messages.get(GameScene.class, "multiple_examine", new Object[0]), names){
+
+                @Override
+                protected void onSelect(int index) {
+                    GameScene.examineObject(objects.get(index));
+                }
+            });
+        }
+    }
+
+    private static ArrayList<Object> getObjectsAtCell(int cell) {
+        Trap trap;
+        Plant plant;
+        Heap heap;
+        ArrayList<Object> objects = new ArrayList<Object>();
+        Char ch = Actor.findChar(cell);
+        if (ch != null && ch != Dungeon.hero && (Dungeon.level.heroFOV[cell] || Char.hasProp(ch, Char.Property.OBJECT))) {
+            objects.add(ch);
+        }
+        if ((heap = (Heap)Dungeon.level.heaps.get(cell)) != null && heap.seen) {
+            objects.add(heap);
+        }
+        if ((plant = (Plant)Dungeon.level.plants.get(cell)) != null) {
+            objects.add(plant);
+        }
+        if (cell == Dungeon.hero.pos) {
+            objects.add(Dungeon.hero);
+        }
+        if ((trap = (Trap)Dungeon.level.traps.get(cell)) != null && trap.visible) {
+            objects.add(trap);
+        }
+        return objects;
+    }
+
+    private static ArrayList<String> getObjectNames(ArrayList<Object> objects) {
+        ArrayList<String> names = new ArrayList<String>();
+        for (Object obj : objects) {
+            if (obj instanceof Hero) {
+                names.add(((Hero)obj).className().toUpperCase(Locale.ENGLISH));
+                continue;
+            }
+            if (obj instanceof Mob) {
+                names.add(Messages.titleCase(((Mob)obj).name()));
+                continue;
+            }
+            if (obj instanceof Heap) {
+                names.add(Messages.titleCase(((Heap)obj).title()));
+                continue;
+            }
+            if (obj instanceof Plant) {
+                names.add(Messages.titleCase(((Plant)obj).name()));
+                continue;
+            }
+            if (!(obj instanceof Trap)) continue;
+            names.add(Messages.titleCase(((Trap)obj).name()));
+        }
+        return names;
+    }
+
+    public static void examineObject(Object o) {
+        if (o == Dungeon.hero) {
+            GameScene.show(new WndHero());
+        } else if (o instanceof Mob && ((Mob)o).isActive()) {
+            GameScene.show(new WndInfoMob((Mob)o));
+            if (o instanceof Snake && !Document.ADVENTURERS_GUIDE.isPageRead("Surprise_Attacks")) {
+                GameScene.flashForDocument(Document.ADVENTURERS_GUIDE, "Surprise_Attacks");
+            }
+        } else if (o instanceof Heap && !((Heap)o).isEmpty()) {
+            GameScene.show(new WndInfoItem((Heap)o));
+        } else if (o instanceof Plant) {
+            GameScene.show(new WndInfoPlant((Plant)o));
+            Bestiary.setSeen(o.getClass());
+        } else if (o instanceof Trap) {
+            GameScene.show(new WndInfoTrap((Trap)o));
+            Bestiary.setSeen(o.getClass());
+        } else {
+            GameScene.show(new WndMessage(Messages.get(GameScene.class, "dont_know", new Object[0])));
+        }
+    }
+
+    static {
+        invVisible = true;
+        updateItemDisplays = false;
+        tagDisappeared = false;
+        updateTags = false;
+        waterOfs = 0.0f;
+        lastOffset = null;
+        defaultCellListener = new CellSelector.Listener(){
+
+            @Override
+            public void onSelect(Integer cell) {
+                if (Dungeon.hero.handle(cell)) {
+                    Dungeon.hero.next();
+                }
+            }
+
+            @Override
+            public void onRightClick(final Integer cell) {
+                if (cell == null || cell < 0 || cell > Dungeon.level.length() || !Dungeon.level.visited[cell] && !Dungeon.level.mapped[cell]) {
+                    return;
+                }
+                final ArrayList<Object> objects = GameScene.getObjectsAtCell(cell);
+                ArrayList<String> textLines = GameScene.getObjectNames(objects);
+                String title = null;
+                Image image = null;
+                if (objects.isEmpty()) {
+                    title = WndInfoCell.cellName(cell);
+                    image = WndInfoCell.cellImage(cell);
+                } else if (objects.size() > 1) {
+                    title = Messages.get(GameScene.class, "multiple", new Object[0]);
+                    image = Icons.get(Icons.INFO);
+                } else if (objects.get(0) instanceof Hero) {
+                    title = textLines.remove(0);
+                    image = HeroSprite.avatar((Hero)objects.get(0));
+                } else if (objects.get(0) instanceof Mob) {
+                    title = textLines.remove(0);
+                    image = ((Mob)objects.get(0)).sprite();
+                } else if (objects.get(0) instanceof Heap) {
+                    title = textLines.remove(0);
+                    image = new ItemSprite((Heap)objects.get(0));
+                } else if (objects.get(0) instanceof Plant) {
+                    title = textLines.remove(0);
+                    image = TerrainFeaturesTilemap.tile(cell, Dungeon.level.map[cell]);
+                } else if (objects.get(0) instanceof Trap) {
+                    title = textLines.remove(0);
+                    image = TerrainFeaturesTilemap.tile(cell, Dungeon.level.map[cell]);
+                }
+                if (objects.isEmpty()) {
+                    textLines.add(0, Messages.get(GameScene.class, "go_here", new Object[0]));
+                } else if (objects.get(0) instanceof Hero) {
+                    textLines.add(0, Messages.get(GameScene.class, "cancel", new Object[0]));
+                } else if (objects.get(0) instanceof Mob) {
+                    if (((Mob)objects.get((int)0)).alignment != Char.Alignment.ENEMY) {
+                        textLines.add(0, Messages.get(GameScene.class, "interact", new Object[0]));
+                    } else {
+                        textLines.add(0, Messages.get(GameScene.class, "attack", new Object[0]));
+                    }
+                } else if (objects.get(0) instanceof Heap) {
+                    switch (((Heap)objects.get((int)0)).type) {
+                        case HEAP: {
+                            textLines.add(0, Messages.get(GameScene.class, "pick_up", new Object[0]));
+                            break;
+                        }
+                        case FOR_SALE: {
+                            textLines.add(0, Messages.get(GameScene.class, "purchase", new Object[0]));
+                            break;
+                        }
+                        default: {
+                            textLines.add(0, Messages.get(GameScene.class, "interact", new Object[0]));
+                            break;
+                        }
+                    }
+                } else if (objects.get(0) instanceof Plant) {
+                    textLines.add(0, Messages.get(GameScene.class, "trample", new Object[0]));
+                } else if (objects.get(0) instanceof Trap) {
+                    textLines.add(0, Messages.get(GameScene.class, "interact", new Object[0]));
+                }
+                if (objects.size() > 1) {
+                    textLines.add(0, "_" + textLines.remove(0) + ":_ " + textLines.get(0));
+                    for (int i = 1; i < textLines.size(); ++i) {
+                        textLines.add(i, "_" + Messages.get(GameScene.class, "examine", new Object[0]) + ":_ " + textLines.remove(i));
+                    }
+                } else {
+                    textLines.add(0, "_" + textLines.remove(0) + "_");
+                    textLines.add(1, "_" + Messages.get(GameScene.class, "examine", new Object[0]) + "_");
+                }
+                RightClickMenu menu = new RightClickMenu(image, title, textLines.toArray(new String[0])){
+
+                    @Override
+                    public void onSelect(int index) {
+                        if (index == 0) {
+                            GameScene.handleCell(cell);
+                        } else if (objects.size() == 0) {
+                            GameScene.show(new WndInfoCell(cell));
+                        } else {
+                            GameScene.examineObject(objects.get(index - 1));
+                        }
+                    }
+                };
+                scene.addToFront(menu);
+                menu.camera = PixelScene.uiCamera;
+                PointF mousePos = PointerEvent.currentHoverPos();
+                mousePos = menu.camera.screenToCamera((int)mousePos.x, (int)mousePos.y);
+                menu.setPos(mousePos.x - 3.0f, mousePos.y - 3.0f);
+            }
+
+            @Override
+            public String prompt() {
+                return null;
+            }
+        };
+    }
+}
+

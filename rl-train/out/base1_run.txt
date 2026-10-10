@@ -1,0 +1,10 @@
+[env] device=cpu gpu=none
+[train] total_steps=30000 n_steps/iter=2048 obs=1417 act=12
+[iter 1] steps=2048 | pi=-0.0129 vf=15.7926 ent=-2.4799 | roll_reward=0.192 | eval avg_depth=1.00 avg_ret=4.12 deaths=0/8 targets=0/8 | 8s
+[iter 2] steps=4096 | pi=-0.0108 vf=7.8695 ent=-2.4700 | roll_reward=0.083 | eval avg_depth=1.00 avg_ret=4.62 deaths=0/8 targets=0/8 | 37s
+[iter 3] steps=6144 | pi=-0.0029 vf=12.8698 ent=-2.4536 | roll_reward=0.170 | eval avg_depth=1.00 avg_ret=4.12 deaths=0/8 targets=0/8 | 66s
+[iter 4] steps=8192 | pi=-0.0035 vf=31.4154 ent=-2.4311 | roll_reward=0.214 | eval avg_depth=1.00 avg_ret=4.12 deaths=0/8 targets=0/8 | 118s
+[iter 5] steps=10240 | pi=-0.0040 vf=24.8720 ent=-2.4198 | roll_reward=0.229 | eval avg_depth=1.00 avg_ret=4.12 deaths=0/8 targets=0/8 | 147s
+[iter 6] steps=12288 | pi=-0.0006 vf=19.2230 ent=-2.4239 | roll_reward=0.126 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 153s
+[iter 7] steps=14336 | pi=-0.0028 vf=22.2609 ent=-2.4245 | roll_reward=0.143 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 183s
+[iter 8] steps=16384 | pi=-0.0117 vf=16.8894 ent=-2.4178 | roll_reward=0.180 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 234s

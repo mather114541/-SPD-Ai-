@@ -1,0 +1,173 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells;
+
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FlavourBuff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.LifeLink;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.HeroSubClass;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.cleric.PowerOfMany;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.GuidingLight;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.Stasis;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.spells.TargetedClericSpell;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.npcs.DirectableAlly;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Beam;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.HolyTome;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfTeleportation;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.scenes.GameScene;
+import com.shatteredpixel.shatteredpixeldungeon.tiles.DungeonTilemap;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+
+public class BeamingRay
+extends TargetedClericSpell {
+    public static BeamingRay INSTANCE = new BeamingRay();
+
+    @Override
+    public int icon() {
+        return 64;
+    }
+
+    @Override
+    public String desc() {
+        return Messages.get(this, "desc", 4 * Dungeon.hero.pointsInTalent(Talent.BEAMING_RAY), 30 + 5 * Dungeon.hero.pointsInTalent(Talent.BEAMING_RAY)) + "\n\n" + Messages.get(this, "charge_cost", (int)this.chargeUse(Dungeon.hero));
+    }
+
+    @Override
+    public int targetingFlags() {
+        return 1;
+    }
+
+    @Override
+    public boolean canCast(Hero hero) {
+        return super.canCast(hero) && hero.hasTalent(Talent.BEAMING_RAY) && (PowerOfMany.getPoweredAlly() != null || Stasis.getStasisAlly() != null);
+    }
+
+    @Override
+    protected void onTargetSelected(HolyTome tome, Hero hero, Integer target) {
+        int telePos;
+        if (target == null) {
+            return;
+        }
+        Char ally = PowerOfMany.getPoweredAlly();
+        if (ally == null) {
+            ally = Dungeon.hero;
+        }
+        if (!Dungeon.level.insideMap(telePos = target.intValue())) {
+            GLog.w(Messages.get(this, "no_space", new Object[0]), new Object[0]);
+            return;
+        }
+        if (Dungeon.level.solid[telePos] || !Dungeon.level.heroFOV[telePos] || Actor.findChar(telePos) != null) {
+            telePos = -1;
+            for (int i : PathFinder.NEIGHBOURS8) {
+                if (Actor.findChar(target + i) != null || !Dungeon.level.heroFOV[target + i] || !Dungeon.level.passable[target + i] && (!ally.flying || !Dungeon.level.avoid[target + i]) || telePos != -1 && !(Dungeon.level.trueDistance(telePos, ally.pos) > Dungeon.level.trueDistance(target + i, ally.pos))) continue;
+                telePos = target + i;
+            }
+        }
+        if (telePos == -1) {
+            GLog.w(Messages.get(this, "no_space", new Object[0]), new Object[0]);
+            return;
+        }
+        if (ally == Dungeon.hero) {
+            ally = Stasis.getStasisAlly();
+        }
+        int range = 4 * hero.pointsInTalent(Talent.BEAMING_RAY);
+        if (Char.hasProp(ally, Char.Property.IMMOVABLE)) {
+            range /= 2;
+        }
+        if (Dungeon.level.distance(ally.pos, telePos) > range) {
+            GLog.w(Messages.get(this, "out_of_range", new Object[0]), new Object[0]);
+            return;
+        }
+        Char chTarget = null;
+        if (Actor.findChar(target) != null && Actor.findChar((int)target.intValue()).alignment == Char.Alignment.ENEMY) {
+            chTarget = Actor.findChar(target);
+            if (hero.subClass == HeroSubClass.PRIEST) {
+                Buff.affect(chTarget, GuidingLight.Illuminated.class);
+            }
+        }
+        if (ally == Stasis.getStasisAlly()) {
+            ally.pos = telePos;
+            GameScene.add((Mob)ally);
+            hero.buff(Stasis.StasisBuff.class).detach();
+            hero.sprite.parent.add(new Beam.SunRay(hero.sprite.center(), DungeonTilemap.raisedTileCenterToWorld(telePos)));
+            Sample.INSTANCE.play("sounds/ray.mp3");
+            if (ally.buff(LifeLink.class) != null) {
+                Buff.prolong((Char)Dungeon.hero, LifeLink.class, (float)ally.buff(LifeLink.class).cooldown()).object = ally.id();
+            }
+        } else {
+            hero.sprite.parent.add(new Beam.SunRay(ally.sprite.center(), DungeonTilemap.raisedTileCenterToWorld(telePos)));
+            Sample.INSTANCE.play("sounds/ray.mp3");
+        }
+        hero.sprite.zap(telePos);
+        ScrollOfTeleportation.appear(ally, telePos);
+        if (chTarget == null) {
+            for (Char ch : Actor.chars()) {
+                if (ch.alignment != Char.Alignment.ENEMY || Dungeon.level.distance(ch.pos, telePos) > 4 || chTarget != null && !(Dungeon.level.trueDistance(chTarget.pos, ally.pos) < Dungeon.level.trueDistance(ch.pos, ally.pos))) continue;
+                chTarget = ch;
+            }
+        }
+        if (chTarget != null) {
+            if (ally instanceof DirectableAlly) {
+                ((DirectableAlly)ally).targetChar(chTarget);
+            } else if (ally instanceof Mob) {
+                ((Mob)ally).aggro(chTarget);
+            }
+            FlavourBuff.prolong((Char)ally, BeamingRayBoost.class, (float)10.0f).object = chTarget.id();
+        } else {
+            if (ally instanceof DirectableAlly) {
+                ((DirectableAlly)ally).clearDefensingPos();
+            }
+            FlavourBuff.prolong(ally, BeamingRayBoost.class, 10.0f);
+        }
+        hero.spendAndNext(1.0f);
+        Dungeon.observe();
+        GameScene.updateFog();
+        this.onSpellCast(tome, hero);
+    }
+
+    public static class BeamingRayBoost
+    extends FlavourBuff {
+        public int object;
+        public static final float DURATION = 10.0f;
+        private static final String OBJECT = "object";
+
+        public BeamingRayBoost() {
+            this.type = Buff.buffType.POSITIVE;
+            this.object = 0;
+        }
+
+        @Override
+        public void storeInBundle(Bundle bundle) {
+            super.storeInBundle(bundle);
+            bundle.put(OBJECT, this.object);
+        }
+
+        @Override
+        public void restoreFromBundle(Bundle bundle) {
+            super.restoreFromBundle(bundle);
+            this.object = bundle.getInt(OBJECT);
+        }
+
+        @Override
+        public int icon() {
+            return 73;
+        }
+
+        @Override
+        public float iconFadePercent() {
+            return Math.max(0.0f, (10.0f - this.visualcooldown()) / 10.0f);
+        }
+    }
+}
+

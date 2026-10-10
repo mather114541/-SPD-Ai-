@@ -1,0 +1,31 @@
+# ---- 编译产物 ----
+/build/
+
+# ---- 外部依赖 jar（需按 README 自行下载，勿提交） ----
+/lib/*.jar
+
+# ---- 游戏存档 ----
+/savedatagame*/
+savedata*/
+*.dat
+
+# ---- 训练轨迹数据（十几 GB，用 RLGenDataBin 脚本重新生成，勿提交） ----
+/rl-train/out/*.bin
+/rl-train/out/traj_*.txt
+
+# ---- 大型源码打包（GitHub 100MB 硬限，勿提交） ----
+/spd-v4.0.0-source.zip
+
+# ---- 训练权重（.pt 用 train_bc2.py 重训生成；部署用 .onnx 走 Git LFS） ----
+/rl-train/out/*.pt
+
+# ---- 运行日志 / 临时 ----
+*.log
+*.tmp
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+.DS_Store

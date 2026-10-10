@@ -1,0 +1,46 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
+
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Ooze;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Slime;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.quest.GooBlob;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.CausticSlimeSprite;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
+
+public class CausticSlime
+extends Slime {
+    public CausticSlime() {
+        this.spriteClass = CausticSlimeSprite.class;
+        this.properties.add(Char.Property.ACIDIC);
+    }
+
+    @Override
+    public int attackProc(Char enemy, int damage) {
+        if (Random.Int(2) == 0) {
+            Buff.affect(enemy, Ooze.class).set(20.0f);
+            if (enemy.sprite != null) enemy.sprite.burst(0, 5);
+        }
+        return super.attackProc(enemy, damage);
+    }
+
+    @Override
+    public void rollToDropLoot() {
+        int ofs;
+        if (Dungeon.hero.lvl > this.maxLvl + 2) {
+            return;
+        }
+        super.rollToDropLoot();
+        while (Dungeon.level.solid[this.pos + (ofs = PathFinder.NEIGHBOURS8[Random.Int(8)])] && !Dungeon.level.passable[this.pos + ofs]) {
+        }
+        com.shatteredpixel.shatteredpixeldungeon.items.Heap h = Dungeon.level.drop((Item)new GooBlob(), (int)(this.pos + ofs));
+        if (h.sprite != null) h.sprite.drop(this.pos);
+    }
+}
+

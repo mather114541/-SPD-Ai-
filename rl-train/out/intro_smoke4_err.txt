@@ -1,0 +1,47 @@
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：金币。
+Exception in thread "HeadlessApplication" java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:68)
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:58)
+	at com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions.<init>(WndOptions.java:41)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1$1.<init>(Chasm.java:67)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1.call(Chasm.java:67)
+	at com.watabou.noosa.Game$1.run(Game.java:249)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.executeRunnables(HeadlessApplication.java:154)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.mainLoop(HeadlessApplication.java:126)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication$1.run(HeadlessApplication.java:93)
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你将一滴露珠收集到了水袋里。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+[GAME] -- 啮齿小鼠杀害了你....
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：金币。
+Exception in thread "HeadlessApplication" java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:68)
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:58)
+	at com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions.<init>(WndOptions.java:41)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1$1.<init>(Chasm.java:67)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1.call(Chasm.java:67)
+	at com.watabou.noosa.Game$1.run(Game.java:249)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.executeRunnables(HeadlessApplication.java:154)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.mainLoop(HeadlessApplication.java:126)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication$1.run(HeadlessApplication.java:93)
+[GAME] 你获得了：风暴藤之种。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：风暴藤之种。
+[GAME] ** 你有点饿了。
+[GAME] -- 你已经饥肠辘辘！
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。

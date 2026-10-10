@@ -1,0 +1,326 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
+
+import com.shatteredpixel.shatteredpixeldungeon.Challenges;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.CrystalMimic;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.EbonyMimic;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.GoldenMimic;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Gold;
+import com.shatteredpixel.shatteredpixeldungeon.items.Heap;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourglass;
+import com.shatteredpixel.shatteredpixeldungeon.items.trinkets.MimicTooth;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.plants.Swiftthistle;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.CharSprite;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.MimicSprite;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.noosa.audio.Sample;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Mimic
+extends Mob {
+    private int level;
+    public ArrayList<Item> items;
+    private boolean stealthy;
+    private static final String LEVEL = "level";
+    private static final String ITEMS = "items";
+    private static final String STEALTHY = "stealthy";
+
+    public Mimic() {
+        this.spriteClass = MimicSprite.class;
+        this.properties.add(Char.Property.DEMONIC);
+        this.EXP = 0;
+        this.alignment = Char.Alignment.NEUTRAL;
+        this.state = this.PASSIVE;
+        this.stealthy = false;
+    }
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        if (this.items != null) {
+            bundle.put(ITEMS, this.items);
+        }
+        bundle.put(LEVEL, this.level);
+        bundle.put(STEALTHY, this.stealthy);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        if (bundle.contains(ITEMS)) {
+            this.items = new ArrayList<Bundlable>(bundle.getCollection(ITEMS));
+        }
+        this.level = bundle.getInt(LEVEL);
+        this.adjustStats(this.level);
+        this.stealthy = bundle.getBoolean(STEALTHY);
+        super.restoreFromBundle(bundle);
+        if (this.state != this.PASSIVE && this.alignment == Char.Alignment.NEUTRAL) {
+            this.alignment = Char.Alignment.ENEMY;
+        }
+    }
+
+    @Override
+    public boolean add(Buff buff) {
+        if (super.add(buff)) {
+            if (buff.type == Buff.buffType.NEGATIVE && this.alignment == Char.Alignment.NEUTRAL) {
+                this.alignment = Char.Alignment.ENEMY;
+                this.stopHiding();
+                if (this.sprite != null) {
+                    this.sprite.idle();
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String name() {
+        if (this.alignment == Char.Alignment.NEUTRAL) {
+            return Messages.get(Heap.class, "chest", new Object[0]);
+        }
+        return super.name();
+    }
+
+    @Override
+    public String description() {
+        if (this.alignment == Char.Alignment.NEUTRAL) {
+            if (MimicTooth.stealthyMimics()) {
+                return Messages.get(Heap.class, "chest_desc", new Object[0]);
+            }
+            return Messages.get(Heap.class, "chest_desc", new Object[0]) + "\n\n" + Messages.get(this, "hidden_hint", new Object[0]);
+        }
+        return super.description();
+    }
+
+    @Override
+    protected boolean act() {
+        if (this.alignment == Char.Alignment.NEUTRAL && this.state != this.PASSIVE) {
+            this.alignment = Char.Alignment.ENEMY;
+            if (this.sprite != null) {
+                this.sprite.idle();
+            }
+            if (Dungeon.level.heroFOV[this.pos]) {
+                GLog.w(Messages.get(this, "reveal", new Object[0]), new Object[0]);
+                CellEmitter.get(this.pos).burst(Speck.factory(1), 10);
+                Sample.INSTANCE.play("sounds/mimic.mp3");
+            }
+        }
+        return super.act();
+    }
+
+    @Override
+    public CharSprite sprite() {
+        MimicSprite sprite = (MimicSprite)super.sprite();
+        if (this.alignment == Char.Alignment.NEUTRAL) {
+            sprite.hideMimic(this);
+        }
+        return sprite;
+    }
+
+    @Override
+    public boolean interact(Char c) {
+        if (this.alignment != Char.Alignment.NEUTRAL || c != Dungeon.hero) {
+            return super.interact(c);
+        }
+        this.stopHiding();
+        Dungeon.hero.busy();
+        Dungeon.hero.sprite.operate(this.pos);
+        if (Dungeon.hero.invisible <= 0 && Dungeon.hero.buff(Swiftthistle.TimeBubble.class) == null && Dungeon.hero.buff(TimekeepersHourglass.timeFreeze.class) == null) {
+            return this.doAttack(Dungeon.hero);
+        }
+        this.sprite.idle();
+        this.alignment = Char.Alignment.ENEMY;
+        Dungeon.hero.spendAndNext(1.0f);
+        return true;
+    }
+
+    @Override
+    public void onAttackComplete() {
+        super.onAttackComplete();
+        if (this.alignment == Char.Alignment.NEUTRAL) {
+            this.alignment = Char.Alignment.ENEMY;
+            Dungeon.hero.spendAndNext(1.0f);
+            this.enemySeen = true;
+        }
+    }
+
+    @Override
+    public int defenseProc(Char enemy, int damage) {
+        if (this.state == this.PASSIVE) {
+            this.alignment = Char.Alignment.ENEMY;
+            this.stopHiding();
+        }
+        return super.defenseProc(enemy, damage);
+    }
+
+    @Override
+    public void damage(int dmg, Object src) {
+        if (this.state == this.PASSIVE) {
+            this.alignment = Char.Alignment.ENEMY;
+            this.stopHiding();
+        }
+        super.damage(dmg, src);
+    }
+
+    @Override
+    public void die(Object cause) {
+        if (this.state == this.PASSIVE) {
+            this.alignment = Char.Alignment.ENEMY;
+            this.stopHiding();
+        }
+        super.die(cause);
+    }
+
+    public void stopHiding() {
+        this.state = this.HUNTING;
+        if (this.sprite != null) {
+            this.sprite.idle();
+        }
+        if (Actor.chars().contains(this) && Dungeon.level.heroFOV[this.pos]) {
+            this.enemy = Dungeon.hero;
+            this.target = Dungeon.hero.pos;
+            GLog.w(Messages.get(this, "reveal", new Object[0]), new Object[0]);
+            CellEmitter.get(this.pos).burst(Speck.factory(1), 10);
+            Sample.INSTANCE.play("sounds/mimic.mp3");
+        }
+    }
+
+    public boolean stealthy() {
+        return this.stealthy;
+    }
+
+    @Override
+    public int damageRoll() {
+        if (this.alignment == Char.Alignment.NEUTRAL) {
+            return Random.NormalIntRange(2 + 2 * this.level, 2 + 2 * this.level);
+        }
+        return Random.NormalIntRange(1 + this.level, 2 + 2 * this.level);
+    }
+
+    @Override
+    public int drRoll() {
+        return super.drRoll() + Random.NormalIntRange(0, 1 + this.level / 2);
+    }
+
+    @Override
+    public void beckon(int cell) {
+        if (this.alignment != Char.Alignment.NEUTRAL) {
+            super.beckon(cell);
+        }
+    }
+
+    @Override
+    public int attackSkill(Char target) {
+        if (target != null && this.alignment == Char.Alignment.NEUTRAL && target.invisible <= 0) {
+            return INFINITE_ACCURACY;
+        }
+        return 6 + this.level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+        this.adjustStats(level);
+    }
+
+    public void adjustStats(int level) {
+        this.HP = this.HT = (1 + level) * 6;
+        this.defenseSkill = 2 + level / 2;
+        this.enemySeen = true;
+    }
+
+    @Override
+    public void rollToDropLoot() {
+        if (this.items != null) {
+            for (Item item : this.items) {
+                Dungeon.level.drop((Item)item, (int)this.pos).sprite.drop();
+            }
+            this.items = null;
+        }
+        super.rollToDropLoot();
+    }
+
+    @Override
+    public float spawningWeight() {
+        return 0.0f;
+    }
+
+    @Override
+    public boolean reset() {
+        if (this.state != this.PASSIVE) {
+            this.state = this.WANDERING;
+        }
+        return true;
+    }
+
+    public static Mimic spawnAt(int pos, Item ... items) {
+        return Mimic.spawnAt(pos, Mimic.class, items);
+    }
+
+    public static Mimic spawnAt(int pos, Class mimicType, Item ... items) {
+        return Mimic.spawnAt(pos, mimicType, true, items);
+    }
+
+    public static Mimic spawnAt(int pos, boolean useDecks, Item ... items) {
+        return Mimic.spawnAt(pos, Mimic.class, useDecks, items);
+    }
+
+    public static Mimic spawnAt(int pos, Class mimicType, boolean useDecks, Item ... items) {
+        Mimic m = mimicType == GoldenMimic.class ? new GoldenMimic() : (mimicType == CrystalMimic.class ? new CrystalMimic() : (mimicType == EbonyMimic.class ? new EbonyMimic() : new Mimic()));
+        m.items = new ArrayList<Item>(Arrays.asList(items));
+        m.setLevel(Dungeon.scalingDepth());
+        m.pos = pos;
+        m.generatePrize(useDecks);
+        if (MimicTooth.stealthyMimics()) {
+            m.stealthy = true;
+        }
+        return m;
+    }
+
+    protected void generatePrize(boolean useDecks) {
+        Item reward = null;
+        do {
+            switch (Random.Int(5)) {
+                case 0: {
+                    reward = new Gold().random();
+                    break;
+                }
+                case 1: {
+                    reward = Generator.randomMissile(!useDecks);
+                    break;
+                }
+                case 2: {
+                    reward = Generator.randomArmor();
+                    break;
+                }
+                case 3: {
+                    reward = Generator.randomWeapon(!useDecks);
+                    break;
+                }
+                case 4: {
+                    Item item = reward = useDecks ? Generator.random(Generator.Category.RING) : Generator.randomUsingDefaults(Generator.Category.RING);
+                }
+            }
+        } while (reward == null || Challenges.isItemBlocked(reward));
+        this.items.add(reward);
+        if (MimicTooth.stealthyMimics()) {
+            this.items.add(Generator.randomUsingDefaults());
+        }
+    }
+}
+

@@ -1,0 +1,2 @@
+[env] device=cpu gpu=none
+[train] total_steps=4096 n_steps/iter=2048 obs=1417 act=12

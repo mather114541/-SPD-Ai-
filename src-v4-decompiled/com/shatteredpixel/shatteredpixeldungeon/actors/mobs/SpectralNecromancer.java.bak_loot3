@@ -1,0 +1,137 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
+
+import com.shatteredpixel.shatteredpixeldungeon.Badges;
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Actor;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Necromancer;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Wraith;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Pushing;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.items.scrolls.ScrollOfRemoveCurse;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.SpectralNecromancerSprite;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
+import java.util.ArrayList;
+
+public class SpectralNecromancer
+extends Necromancer {
+    private ArrayList<Integer> wraithIDs;
+    private static final String WRAITH_IDS = "wraith_ids";
+
+    public SpectralNecromancer() {
+        this.spriteClass = SpectralNecromancerSprite.class;
+        this.wraithIDs = new ArrayList();
+    }
+
+    @Override
+    protected boolean act() {
+        if (this.summoning && this.state != this.HUNTING) {
+            this.summoning = false;
+            if (this.sprite instanceof SpectralNecromancerSprite) {
+                ((SpectralNecromancerSprite)this.sprite).cancelSummoning();
+            }
+        }
+        return super.act();
+    }
+
+    @Override
+    public void rollToDropLoot() {
+        int ofs;
+        if (Dungeon.hero.lvl > this.maxLvl + 2) {
+            return;
+        }
+        super.rollToDropLoot();
+        while (Dungeon.level.solid[this.pos + (ofs = PathFinder.NEIGHBOURS8[Random.Int(8)])] && !Dungeon.level.passable[this.pos + ofs]) {
+        }
+        Dungeon.level.drop((Item)new ScrollOfRemoveCurse(), (int)(this.pos + ofs)).sprite.drop(this.pos);
+    }
+
+    @Override
+    public void die(Object cause) {
+        for (int ID : this.wraithIDs) {
+            Actor a = Actor.findById(ID);
+            if (!(a instanceof Wraith) || ((Wraith)a).alignment != this.alignment) continue;
+            ((Wraith)a).die(null);
+        }
+        super.die(cause);
+    }
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        int[] wraithIDArr = new int[this.wraithIDs.size()];
+        int i = 0;
+        for (Integer val : this.wraithIDs) {
+            wraithIDArr[i] = val;
+            ++i;
+        }
+        bundle.put(WRAITH_IDS, wraithIDArr);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        this.wraithIDs.clear();
+        for (int i : bundle.getIntArray(WRAITH_IDS)) {
+            this.wraithIDs.add(i);
+        }
+    }
+
+    @Override
+    public void summonMinion() {
+        if (Actor.findChar(this.summoningPos) != null) {
+            int pushPos = this.pos;
+            for (int c : PathFinder.NEIGHBOURS8) {
+                if (Actor.findChar(this.summoningPos + c) != null || !Dungeon.level.passable[this.summoningPos + c] || !Dungeon.level.openSpace[this.summoningPos + c] && SpectralNecromancer.hasProp(Actor.findChar(this.summoningPos), Char.Property.LARGE) || !(Dungeon.level.trueDistance(this.pos, this.summoningPos + c) > Dungeon.level.trueDistance(this.pos, pushPos))) continue;
+                pushPos = this.summoningPos + c;
+            }
+            if (Char.hasProp(Actor.findChar(this.summoningPos), Char.Property.IMMOVABLE)) {
+                pushPos = this.pos;
+            }
+            if (pushPos != this.pos) {
+                Char ch = Actor.findChar(this.summoningPos);
+                Actor.add(new Pushing(ch, ch.pos, pushPos));
+                ch.pos = pushPos;
+                Dungeon.level.occupyCell(ch);
+            } else {
+                Char blocker = Actor.findChar(this.summoningPos);
+                if (blocker.alignment != this.alignment) {
+                    blocker.damage(Random.NormalIntRange(2, 10), new Necromancer.SummoningBlockDamage());
+                    if (blocker == Dungeon.hero && !blocker.isAlive()) {
+                        Badges.validateDeathFromEnemyMagic();
+                        Dungeon.fail(this);
+                        GLog.n(Messages.capitalize(Messages.get(Char.class, "kill", this.name())), new Object[0]);
+                    }
+                }
+                this.spend(1.0f);
+                return;
+            }
+        }
+        this.firstSummon = false;
+        this.summoning = false;
+        Wraith wraith = Wraith.spawnAt(this.summoningPos, Wraith.class);
+        if (wraith == null) {
+            this.spend(1.0f);
+            return;
+        }
+        wraith.adjustStats(4);
+        Dungeon.level.occupyCell(wraith);
+        ((SpectralNecromancerSprite)this.sprite).finishSummoning();
+        Object object = this.buffs().iterator();
+        while (object.hasNext()) {
+            Buff b = (Buff)object.next();
+            if (!b.revivePersists) continue;
+            Buff.affect(wraith, b.getClass());
+        }
+        this.wraithIDs.add(wraith.id());
+    }
+}
+

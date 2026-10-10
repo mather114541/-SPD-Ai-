@@ -1,0 +1,17 @@
+[env] device=cpu gpu=none
+[train] total_steps=30000 n_steps/iter=2048 obs=1417 act=12
+[iter 1] steps=2048 | pi=-0.0167 vf=12.0626 ent=-2.4774 | roll_reward=0.124 | eval avg_depth=1.00 avg_ret=0.88 deaths=0/8 targets=0/8 | 8s
+[iter 2] steps=4096 | pi=-0.0048 vf=16.5455 ent=-2.4675 | roll_reward=0.193 | eval avg_depth=1.00 avg_ret=4.38 deaths=0/8 targets=0/8 | 60s
+[iter 3] steps=6144 | pi=-0.0051 vf=21.7140 ent=-2.4598 | roll_reward=0.122 | eval avg_depth=1.00 avg_ret=4.75 deaths=0/8 targets=0/8 | 66s
+[iter 4] steps=8192 | pi=-0.0068 vf=13.1789 ent=-2.4395 | roll_reward=0.118 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 72s
+[iter 5] steps=10240 | pi=-0.0063 vf=12.2717 ent=-2.4024 | roll_reward=0.088 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 79s
+[iter 6] steps=12288 | pi=-0.0010 vf=66.9452 ent=-2.3918 | roll_reward=0.341 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 130s
+[iter 7] steps=14336 | pi=-0.0067 vf=7.1375 ent=-2.4254 | roll_reward=0.085 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 137s
+[iter 8] steps=16384 | pi=-0.0006 vf=13.3817 ent=-2.4262 | roll_reward=0.097 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 143s
+[iter 9] steps=18432 | pi=-0.0025 vf=22.7790 ent=-2.4327 | roll_reward=0.173 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 149s
+[iter 10] steps=20480 | pi=-0.0065 vf=11.9152 ent=-2.4516 | roll_reward=0.090 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 156s
+[iter 11] steps=22528 | pi=-0.0030 vf=19.9732 ent=-2.1741 | roll_reward=0.094 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 162s
+[iter 12] steps=24576 | pi=-0.0053 vf=14.0672 ent=-2.3903 | roll_reward=0.088 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 168s
+[iter 13] steps=26624 | pi=-0.0039 vf=8.0119 ent=-2.4255 | roll_reward=0.076 | eval avg_depth=1.00 avg_ret=13.12 deaths=0/8 targets=0/8 | 174s
+[iter 14] steps=28672 | pi=-0.0003 vf=28.8539 ent=-2.2986 | roll_reward=0.225 | eval avg_depth=1.00 avg_ret=13.00 deaths=0/8 targets=0/8 | 180s
+[done] 180s total_steps=28672 saved=C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\out\ppo_base3.pt

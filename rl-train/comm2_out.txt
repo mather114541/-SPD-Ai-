@@ -1,0 +1,11 @@
+﻿=== STDOUT ===
+0 OK len=1417 depth=1 pos=99 reward=0 done=false
+1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+2 ERR java.lang.NullPointerException
+=== STDERR (tail) ===
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.rooms.special.SentryRoom$Sentry.act(SentryRoom.java:280)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:157)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)

@@ -1,0 +1,24 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=4000 n_steps/iter=2048 obs=1417 act=12
+python : Traceback (most recent call last):
+所在位置 行:1 字符: 79
++ ... tion $base; python rl-train\train_ppo.py --steps 4000 --tag smoke --n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 281, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 259, in main
+    rollout = make_rollout(env, policy, device, N_STEPS, args.seed, 0.99, 0.95)
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 139, in make_rollout
+    obs, _ = env.reset(seed_base)
+             ~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 67, in reset
+    obs, fields = self._read_obs()
+                  ~~~~~~~~~~~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 57, in _read_obs
+    k, v = kv.split("=")
+    ^^^^
+ValueError: not enough values to unpack (expected 2, got 1)

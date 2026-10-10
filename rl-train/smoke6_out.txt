@@ -1,0 +1,12 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=2048 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... tion $base; python rl-train\train_ppo.py --steps 2048 --tag smoke2 *> ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[iter 1] steps=2048 | pi=-0.0149 vf=0.0316 ent=-2.4799 | roll_reward=0.000 | eval avg_depth=1.00 avg_ret=0.00 deaths=0/4 targets=0/4 | 7s
+[done] 7s total_steps=2048 saved=C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\out\ppo_smoke2.pt

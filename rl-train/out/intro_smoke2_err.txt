@@ -1,0 +1,235 @@
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.moveSprite(Char.java:284)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.access$600(Mob.java:91)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1132)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.moveSprite(Char.java:284)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.access$600(Mob.java:91)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1132)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1820)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1511)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1820)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1511)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.watabou.noosa.Game.scene(Game.java:223)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.drop(Level.java:877)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1820)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1511)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.moveSprite(Char.java:284)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.access$600(Mob.java:91)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1132)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] ** 你没有对应的钥匙。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.moveSprite(Char.java:284)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.access$600(Mob.java:91)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1132)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你有点饿了。
+[GAME] 你获得了：奥术刻笔。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+Exception in thread "HeadlessApplication" java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:68)
+	at com.shatteredpixel.shatteredpixeldungeon.ui.Window.<init>(Window.java:58)
+	at com.shatteredpixel.shatteredpixeldungeon.windows.WndOptions.<init>(WndOptions.java:41)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1$1.<init>(Chasm.java:67)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.Chasm$1.call(Chasm.java:67)
+	at com.watabou.noosa.Game$1.run(Game.java:249)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.executeRunnables(HeadlessApplication.java:154)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication.mainLoop(HeadlessApplication.java:126)
+	at com.badlogic.gdx.backends.headless.HeadlessApplication$1.run(HeadlessApplication.java:93)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 你没有对应的钥匙。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+[GAME] ** 箱子锁着而你没有对应的钥匙。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.reallyDie(Hero.java:1784)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.die(Hero.java:1750)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.damage(Char.java:893)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.damage(Hero.java:1350)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:425)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:325)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.doAttack(Mob.java:611)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1115)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.reallyDie(Hero.java:1784)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.die(Hero.java:1750)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.damage(Char.java:893)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.damage(Hero.java:1350)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:425)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:325)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.doAttack(Mob.java:611)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1115)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[GAME] 你获得了：地牢探索指南。
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.reallyDie(Hero.java:1784)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.die(Hero.java:1750)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.damage(Char.java:893)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.damage(Hero.java:1350)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:425)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.attack(Char.java:325)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.doAttack(Mob.java:611)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob$Hunting.act(Mob.java:1115)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob.act(Mob.java:275)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Rat.act(Rat.java:51)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.traps.WornDartTrap$1.act(WornDartTrap.java:96)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.levels.features.HighGrass.trample(HighGrass.java:108)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.pressCell(Level.java:1038)
+	at com.shatteredpixel.shatteredpixeldungeon.levels.Level.occupyCell(Level.java:1009)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1084)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.move(Hero.java:1820)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Char.move(Char.java:1063)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.getCloser(Hero.java:1511)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.actMove(Hero.java:844)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero.act(Hero.java:773)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:160)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)

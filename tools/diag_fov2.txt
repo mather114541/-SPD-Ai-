@@ -1,0 +1,30 @@
+﻿reset depth=1 pos=99 explore=64 fov=64
+a=0 -> pos=68 depth=1 reward=0 explore=64 fov=64
+a=1 -> pos=68 depth=1 reward=0 explore=64 fov=64
+a=2 -> pos=68 depth=1 reward=0 explore=64 fov=64
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 78
++ ... ation $base; python tools\diag_move.py *> tools\diag_fov2.txt; Get-Co ...
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+a=3 -> pos=67 depth=1 reward=0 explore=64 fov=64
+a=4 -> pos=68 depth=1 reward=0 explore=64 fov=64
+a=5 -> pos=97 depth=1 reward=0 explore=64 fov=64
+a=6 -> pos=127 depth=1 reward=0 explore=64 fov=64
+a=7 -> pos=158 depth=1 reward=0 explore=64 fov=64
+a=8 -> pos=158 depth=1 reward=0 explore=64 fov=64
+--- spam action 4 x10 ---
+Traceback (most recent call last):
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\tools\diag_move.py", line 38, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\tools\diag_move.py", line 31, in main
+    o, r, d, f, rest = env.step(4)
+                       ~~~~~~~~^^^
+  File "C:\Users\33040\Doubao\chats\2026-10-08\new-chat\rl-train\train_ppo.py", line 122, in step
+    self.proc.stdin.write("step %d\n" % action)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.

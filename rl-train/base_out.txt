@@ -1,0 +1,18 @@
+﻿[env] device=cpu gpu=none
+[train] total_steps=60000 n_steps/iter=2048 obs=1417 act=12
+python : [GAME] 你获得了：地牢探索指南。
+所在位置 行:1 字符: 79
++ ... tion $base; python rl-train\train_ppo.py --steps 60000 --tag base --n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([GAME] 你获得了：地牢探索指南。:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+[GAME] ++ 点击屏幕右上角闪光的日志按钮以阅读你刚刚拾起的书页。
+java.lang.NullPointerException
+	at com.shatteredpixel.shatteredpixeldungeon.actors.blobs.SacrificialFire.evolve(SacrificialFire.java:109)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob.act(Blob.java:123)
+	at com.shatteredpixel.shatteredpixeldungeon.actors.Actor.processTurn(Actor.java:288)
+	at rl.RLController.step(RLController.java:157)
+	at rl.RLCli.lambda$runProtoLoop$0(RLCli.java:89)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+[debug] non-OK meta= 'ERR java.lang.NullPointerException'

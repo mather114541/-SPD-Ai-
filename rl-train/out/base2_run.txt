@@ -1,0 +1,6 @@
+[env] device=cpu gpu=none
+[train] total_steps=30000 n_steps/iter=2048 obs=1417 act=12
+[iter 1] steps=2048 | pi=-0.0148 vf=1.7206 ent=-2.4773 | roll_reward=0.043 | eval avg_depth=1.00 avg_ret=1.50 deaths=0/8 targets=0/8 | 8s
+[iter 2] steps=4096 | pi=-0.0030 vf=7.1570 ent=-2.4659 | roll_reward=0.102 | eval avg_depth=1.00 avg_ret=1.50 deaths=0/8 targets=0/8 | 37s
+[iter 3] steps=6144 | pi=-0.0034 vf=3.9275 ent=-2.4605 | roll_reward=0.071 | eval avg_depth=1.00 avg_ret=1.50 deaths=0/8 targets=0/8 | 43s
+[iter 4] steps=8192 | pi=-0.0073 vf=1.9904 ent=-2.4733 | roll_reward=0.041 | eval avg_depth=1.00 avg_ret=2.75 deaths=0/8 targets=0/8 | 49s

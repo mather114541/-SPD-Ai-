@@ -1,0 +1,196 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.shatteredpixel.shatteredpixeldungeon.actors.mobs;
+
+import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
+import com.shatteredpixel.shatteredpixeldungeon.actors.Char;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Hero;
+import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
+import com.shatteredpixel.shatteredpixeldungeon.effects.CellEmitter;
+import com.shatteredpixel.shatteredpixeldungeon.effects.Speck;
+import com.shatteredpixel.shatteredpixeldungeon.items.Generator;
+import com.shatteredpixel.shatteredpixeldungeon.items.Gold;
+import com.shatteredpixel.shatteredpixeldungeon.items.Honeypot;
+import com.shatteredpixel.shatteredpixeldungeon.items.Item;
+import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
+import com.shatteredpixel.shatteredpixeldungeon.sprites.ThiefSprite;
+import com.shatteredpixel.shatteredpixeldungeon.utils.GLog;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
+
+public class Thief
+extends Mob {
+    public Item item;
+    private static final String ITEM = "item";
+
+    public Thief() {
+        this.spriteClass = ThiefSprite.class;
+        this.HT = 20;
+        this.HP = 20;
+        this.defenseSkill = 12;
+        this.EXP = 5;
+        this.maxLvl = 11;
+        this.loot = Random.oneOf(Generator.Category.RING, Generator.Category.ARTIFACT);
+        this.lootChance = 0.03f;
+        this.WANDERING = new Wandering();
+        this.FLEEING = new Fleeing();
+        this.properties.add(Char.Property.UNDEAD);
+    }
+
+    @Override
+    public void storeInBundle(Bundle bundle) {
+        super.storeInBundle(bundle);
+        bundle.put(ITEM, this.item);
+    }
+
+    @Override
+    public void restoreFromBundle(Bundle bundle) {
+        super.restoreFromBundle(bundle);
+        this.item = (Item)bundle.get(ITEM);
+    }
+
+    @Override
+    public float speed() {
+        if (this.item != null) {
+            return 5.0f * super.speed() / 6.0f;
+        }
+        return super.speed();
+    }
+
+    @Override
+    public int damageRoll() {
+        return Random.NormalIntRange(1, 10);
+    }
+
+    @Override
+    public float attackDelay() {
+        return super.attackDelay() * 0.5f;
+    }
+
+    @Override
+    public float lootChance() {
+        return super.lootChance() * (float)Math.pow(0.3333333432674408, Dungeon.LimitedDrops.THEIF_MISC.count);
+    }
+
+    @Override
+    public void rollToDropLoot() {
+        if (this.item != null) {
+            Dungeon.level.drop((Item)this.item, (int)this.pos).sprite.drop();
+            if (this.item instanceof Honeypot.ShatteredPot) {
+                ((Honeypot.ShatteredPot)this.item).dropPot(this, this.pos);
+            }
+            this.item = null;
+        }
+        super.rollToDropLoot();
+    }
+
+    @Override
+    public Item createLoot() {
+        ++Dungeon.LimitedDrops.THEIF_MISC.count;
+        return super.createLoot();
+    }
+
+    @Override
+    public int attackSkill(Char target) {
+        return 12;
+    }
+
+    @Override
+    public int drRoll() {
+        return super.drRoll() + Random.NormalIntRange(0, 3);
+    }
+
+    @Override
+    public int attackProc(Char enemy, int damage) {
+        damage = super.attackProc(enemy, damage);
+        if (this.alignment == Char.Alignment.ENEMY && this.item == null && enemy instanceof Hero && this.steal((Hero)enemy)) {
+            this.state = this.FLEEING;
+        }
+        return damage;
+    }
+
+    @Override
+    public int defenseProc(Char enemy, int damage) {
+        if (this.state == this.FLEEING) {
+            Dungeon.level.drop((Item)new Gold(), (int)this.pos).sprite.drop();
+        }
+        return super.defenseProc(enemy, damage);
+    }
+
+    protected boolean steal(Hero hero) {
+        Item toSteal = hero.belongings.randomUnequipped();
+        if (toSteal != null && !toSteal.unique && toSteal.level() < 1) {
+            GLog.w(Messages.get(Thief.class, "stole", toSteal.name()), new Object[0]);
+            if (!toSteal.stackable) {
+                Dungeon.quickslot.convertToPlaceholder(toSteal);
+            }
+            Item.updateQuickslot();
+            this.item = toSteal.detach(hero.belongings.backpack);
+            if (this.item instanceof Honeypot) {
+                this.item = ((Honeypot)this.item).shatter(this, this.pos);
+            } else if (this.item instanceof Honeypot.ShatteredPot) {
+                ((Honeypot.ShatteredPot)this.item).pickupPot(this);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String description() {
+        Object desc = super.description();
+        if (this.item != null) {
+            desc = (String)desc + Messages.get(this, "carries", this.item.name());
+        }
+        return desc;
+    }
+
+    private class Wandering
+    extends Mob.Wandering {
+        private Wandering() {
+        }
+
+        @Override
+        public boolean act(boolean enemyInFOV, boolean justAlerted) {
+            super.act(enemyInFOV, justAlerted);
+            if (Thief.this.state == Thief.this.HUNTING && Thief.this.item != null) {
+                Thief.this.state = Thief.this.FLEEING;
+            }
+            return true;
+        }
+    }
+
+    private class Fleeing
+    extends Mob.Fleeing {
+        private Fleeing() {
+        }
+
+        @Override
+        protected void escaped() {
+            if (Thief.this.item != null && !Dungeon.level.heroFOV[Thief.this.pos] && Dungeon.level.distance(Dungeon.hero.pos, Thief.this.pos) >= 6) {
+                int newPos;
+                int count = 32;
+                do {
+                    newPos = Dungeon.level.randomRespawnCell(Thief.this);
+                } while (count-- > 0 && (newPos == -1 || Dungeon.level.heroFOV[newPos] || Dungeon.level.distance(newPos, Thief.this.pos) < count / 3));
+                if (newPos != -1) {
+                    Thief.this.pos = newPos;
+                    Thief.this.sprite.place(Thief.this.pos);
+                    Thief.this.sprite.visible = Dungeon.level.heroFOV[Thief.this.pos];
+                    if (Dungeon.level.heroFOV[Thief.this.pos]) {
+                        CellEmitter.get(Thief.this.pos).burst(Speck.factory(7), 6);
+                    }
+                }
+                if (Thief.this.item != null) {
+                    GLog.n(Messages.get(Thief.class, "escapes", Thief.this.item.name()), new Object[0]);
+                }
+                Thief.this.item = null;
+                Thief.this.state = Thief.this.WANDERING;
+            } else {
+                Thief.this.state = Thief.this.WANDERING;
+            }
+        }
+    }
+}
+
